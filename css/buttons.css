@@ -1,0 +1,7 @@
+.btn{font-family:'Archivo',sans-serif;font-weight:600;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;padding:13px 26px;border:1px solid var(--copper);background:transparent;color:var(--sand);cursor:pointer;text-decoration:none;display:inline-block;transition:background .3s,color .3s,border-color .3s,transform .3s;}
+.btn-cta{background:var(--copper);color:var(--bg);border-color:var(--copper);}
+[data-theme="light"] .btn-cta{color:#FBF8F3;}
+.btn:hover,.btn:focus-visible{transform:translateY(-1px);}
+.btn:focus-visible{outline:1px solid var(--copper);outline-offset:5px;}
+.btn-cta:hover,.btn-outline:hover,.btn-cta:focus-visible,.btn-outline:focus-visible{background:var(--copper-bright);border-color:var(--copper-bright);color:var(--bg);}
+[data-theme="light"] .btn-outline:hover,[data-theme="light"] .btn-outline:focus-visible{color:#FBF8F3;}

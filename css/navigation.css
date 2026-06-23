@@ -1,0 +1,22 @@
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px var(--page-pad);border-bottom:1px solid transparent;transition:background .4s,border-color .4s,padding .4s;}
+nav.scrolled{background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:16px var(--page-pad);}
+nav .logo{font-size:20px;color:var(--sand);text-decoration:none;}
+nav.scrolled .brand-logo-img{width:132px;height:48px;}
+.nav-right{display:flex;align-items:center;gap:34px;}
+.nav-links{display:flex;gap:30px;}
+.nav-links a{color:var(--sand-dim);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:0.02em;transition:color .25s;position:relative;}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;height:1px;width:0;background:var(--copper);transition:width .3s;}
+.nav-links a:hover,.nav-links a.active,.nav-links a:focus-visible{color:var(--sand);}
+.nav-links a:hover::after,.nav-links a.active::after,.nav-links a:focus-visible::after{width:100%;}
+.nav-links a:focus-visible{outline:1px solid var(--copper);outline-offset:8px;}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:38px;height:36px;border:1px solid var(--line);background:none;color:var(--sand-dim);cursor:pointer;transition:color .25s,border-color .25s;}
+.theme-toggle:hover,.theme-toggle:focus-visible{color:var(--copper);border-color:var(--copper);}
+.theme-toggle:focus-visible{outline:1px solid var(--copper);outline-offset:4px;}
+.theme-toggle svg{width:17px;height:17px;}
+.theme-toggle .t-sun{display:none;}
+[data-theme="light"] .theme-toggle .t-moon{display:none;}
+[data-theme="light"] .theme-toggle .t-sun{display:block;}
+.menu-toggle{display:none;background:none;border:none;color:var(--sand);cursor:pointer;flex-direction:column;gap:5px;transition:color .3s,transform .3s;}
+.menu-toggle:hover,.menu-toggle:focus-visible{color:var(--copper);transform:translateY(-1px);}
+.menu-toggle:focus-visible{outline:1px solid var(--copper);outline-offset:5px;}
+.menu-toggle span{width:22px;height:1.5px;background:currentColor;display:block;}

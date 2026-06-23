@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRES ART — Digital Foundry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pages/landingpagev3wide.css">
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#top" class="logo brand-logo" aria-label="TRES ART"><img src="assets/images/logo2.png" alt="TRES ART" class="brand-logo-img" decoding="async"></a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="mozliwosci.html" data-i="nav_foundry">Digital Foundry</a>
+      <a href="realizacje.html" data-i="nav_work">Realizacje</a>
+      <a href="proces.html" data-i="nav_process">Proces</a>
+      <a href="materialy.html" data-i="nav_materials">Materiały</a>
+      <a href="dla-tworcow.html" data-i="nav_collab">Dla projektantów</a>
+    </div>
+    <div class="lang" id="lang">
+      <button data-lang="pl" class="active">PL</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="de">DE</button>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Zmień motyw" title="Jasny / ciemny">
+      <svg class="t-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="t-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg>
+    </button>
+    <a href="kontakt.html" class="btn btn-cta" data-i="nav_cta">Kontakt</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-media"><canvas id="foundryCanvas"></canvas></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-inner wrap">
+    <div class="eyebrow" data-i="hero_eyebrow">Digital Foundry — Warszawa</div>
+    <h1 class="display"><span data-i="hero_h1a">Gdzie kod</span> <span class="shape" data-i="hero_h1b">kształtuje</span> <span data-i="hero_h1c">przestrzeń.</span></h1>
+    <p class="sub" data-i="hero_sub">Wielkoformatowy druk 3D dla grafików, projektantów i architektów. Zamieniamy Twoje pliki 3D w fizyczne meble i obiekty z precyzją mistrzowskiego rzemiosła.</p>
+    <div class="hero-actions">
+      <a href="kontakt.html" class="btn btn-cta" data-i="hero_cta1">Rozpocznij projekt</a>
+      <a href="realizacje.html" class="btn btn-outline" data-i="hero_cta2">Zobacz realizacje</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span data-i="scroll">Przewiń</span><span class="bar"></span></div>
+</header>
+
+<section class="manifest" aria-labelledby="manifest-title">
+  <div class="manifest-grid wrap">
+    <div class="manifest-text">
+      <h2 class="manifest-copy" id="manifest-title"><span data-i="manifest_a">Tradycyjna produkcja narzuca ograniczenia.</span> <strong>tresart</strong> <span data-i="manifest_b">usuwa je, zamieniając projekty grafików, architektów i artystów w monumentalne meble oraz formy przestrzenne.</span></h2>
+      <div class="manifest-stats" aria-label="Parametry produkcji tresart">
+        <div class="manifest-stat">
+          <span class="label" data-i="manifest_stat1_l">Skala druku</span>
+          <span class="value" data-i="manifest_stat1_v">2.5M</span>
+        </div>
+        <div class="manifest-stat">
+          <span class="label" data-i="manifest_stat2_l">Barier produkcji</span>
+          <span class="value" data-i="manifest_stat2_v">0</span>
+        </div>
+        <div class="manifest-stat">
+          <span class="label" data-i="manifest_stat3_l">Wierność pliku</span>
+          <span class="value" data-i="manifest_stat3_v">1:1</span>
+        </div>
+      </div>
+    </div>
+    <div class="manifest-stack" aria-label="Manifest produkcyjny tresart">
+      <article class="manifest-card primary on-demand">
+        <div class="pill" data-i="manifest_card1_t">Na żądanie</div>
+        <p data-i="manifest_card1_p">Ty projektujesz bez limitów, my drukujemy z pedantyczną precyzją.</p>
+      </article>
+      <article class="manifest-card compact traceable">
+        <div class="pill" data-i="manifest_card3_t">Detal</div>
+        <span class="plus" aria-hidden="true"></span>
+      </article>
+      <article class="manifest-card compact distributed">
+        <div class="pill" data-i="manifest_card4_t">Skala</div>
+        <span class="plus" aria-hidden="true"></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<section class="sec-pad wrap" id="audience">
+  <div class="sec-head reveal">
+    <div>
+      <div class="eyebrow" style="margin-bottom:22px;" data-i="aud_eyebrow">Z kim pracujemy</div>
+      <h2 class="display" data-i="aud_h2">Twój projekt. Nasza materia.</h2>
+    </div>
+    <p data-i="aud_p">Jesteśmy wykonawcą, nie konkurencją. Realizujemy wizje twórców zewnętrznych — od pojedynczego mebla po przestrzenną instalację.</p>
+  </div>
+  <div class="audience reveal">
+    <div class="aud"><div class="ai">01</div><h3 data-i="aud1_h">Graficy i artyści 3D</h3><p data-i="aud1_p">Masz model, który dotąd istniał tylko na ekranie. Nadajemy mu ciężar, skalę i powierzchnię, którą można dotknąć.</p></div>
+    <div class="aud"><div class="ai">02</div><h3 data-i="aud2_h">Projektanci mebli</h3><p data-i="aud2_p">Realizujemy meble autorskie i małe serie — bez form wtryskowych, bez kompromisów w geometrii.</p></div>
+    <div class="aud"><div class="ai">03</div><h3 data-i="aud3_h">Architekci i studia</h3><p data-i="aud3_p">Obiekty przestrzenne, elementy wnętrz i instalacje w skali, której nie udźwignie standardowy druk.</p></div>
+  </div>
+</section>
+
+<section class="sec-pad wrap" id="foundry">
+  <div class="sec-head reveal">
+    <div>
+      <div class="eyebrow" style="margin-bottom:22px;" data-i="cap_eyebrow">Digital Foundry</div>
+      <h2 class="display" data-i="cap_h2">Stworzone dla rzeczy niemożliwych.</h2>
+    </div>
+    <p data-i="cap_p">Trzy filary definiują naszą pracę: skala, którą udźwigniemy, materia, z której formujemy, i uczciwość powierzchni, którą zostawiamy.</p>
+  </div>
+  <div class="bento reveal">
+    <div class="box box-scale">
+      <div class="layerlines" id="layerlines"></div>
+      <span class="num">01 / <span data-i="b1_num">Skala</span></span>
+      <div style="margin-top:auto;">
+        <div class="metric"><span class="big">2.5</span><span class="unit" data-i="b1_unit">METRA</span></div>
+        <h3 data-i="b1_h">Wielkoformatowy druk robotyczny</h3>
+        <p data-i="b1_p">Jedna ciągła przestrzeń robocza sięgająca dwóch i pół metra. Siedziska, monolityczne stoły i rzeźby drukowane jednym gestem — bez łączeń, bez kompromisów.</p>
+      </div>
+    </div>
+    <div class="box box-materials">
+      <span class="num">02 / <span data-i="b2_num">Materiały</span></span>
+      <h3 style="margin-top:24px;" data-i="b2_h">Uczciwa materia</h3>
+      <p data-i="b2_p">Matowe biokompozyty, polimery z recyklingu i strukturalne ziemiste tony — dobrane dla trwałości i dotyku.</p>
+      <div class="swatches" aria-hidden="true"><div style="background:#2A2620;"></div><div style="background:#3E3528;"></div><div style="background:#A88A64;"></div><div style="background:#6F6657;"></div><div style="background:#D8CFC0;"></div></div>
+    </div>
+    <div class="box box-texture">
+      <span class="num">03 / <span data-i="b3_num">Faktura</span></span>
+      <h3 style="margin-top:24px;" data-i="b3_h">Linia</h3>
+      <p data-i="b3_p">Linie warstw to nie wada do ukrycia. Traktujemy je jako podpis metody — widoczny zapis tego, jak powstał obiekt.</p>
+      <div class="texture-vis" aria-hidden="true"></div>
+    </div>
+    <div class="box box-finish">
+      <div>
+        <span class="num">04 / <span data-i="b4_num">Wykończenie</span></span>
+        <h3 style="margin-top:24px;" data-i="b4_h">Ręka rzemieślnika</h3>
+        <p data-i="b4_p">Każdy obiekt po zejściu z ramienia robota trafia w ręce człowieka — zabezpieczony i wykończony do standardu galeryjnego.</p>
+      </div>
+      <div class="tag" data-i="b4_tag">Atelier Milan</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-pad wrap" id="materials">
+  <div class="sec-head reveal">
+    <div>
+      <div class="eyebrow" style="margin-bottom:22px;" data-i="mat_eyebrow">Materiały i wykończenia</div>
+      <h2 class="display" data-i="mat_h2">Powierzchnia robi różnicę.</h2>
+    </div>
+    <p data-i="mat_p">Dobieramy materiał, kolor i fakturę pod projekt: od surowej, widocznej linii warstwy po gładkie wykończenie gotowe do zdjęć, ekspozycji i klienta.</p>
+  </div>
+  <div class="material-grid reveal">
+    <div class="material-visual">
+      <div class="stamp" data-i="mat_stamp">Biblioteka próbek</div>
+      <div>
+        <h3 data-i="mat_visual_h">Mat. Linia. Kolor.</h3>
+        <p data-i="mat_visual_p">Próbki ustalamy przed drukiem, żeby fizyczna powierzchnia wspierała render, a nie przypadek procesu.</p>
+        <div class="material-swatches" aria-hidden="true">
+          <span style="background:#211c18;"></span>
+          <span style="background:#3E3528;"></span>
+          <span style="background:#805D35;"></span>
+          <span style="background:#A88A64;"></span>
+          <span style="background:#6F6657;"></span>
+          <span style="background:#D8CFC0;"></span>
+        </div>
+      </div>
+    </div>
+    <div class="finish-list">
+      <article class="finish-item">
+        <div class="fi-num">01</div>
+        <div>
+          <h4 data-i="mat_1_h">Biokompozyty</h4>
+          <p data-i="mat_1_p">Materiały techniczne i recyklingowe dobierane pod trwałość, wagę i charakter obiektu.</p>
+        </div>
+      </article>
+      <article class="finish-item">
+        <div class="fi-num">02</div>
+        <div>
+          <h4 data-i="mat_2_h">Mat surowy</h4>
+          <p data-i="mat_2_p">Warstwa i ślad druku jako świadomy efekt, kiedy projekt ma pokazać technologię.</p>
+        </div>
+      </article>
+      <article class="finish-item">
+        <div class="fi-num">03</div>
+        <div>
+          <h4 data-i="mat_3_h">Gładkie wykończenie</h4>
+          <p data-i="mat_3_p">Szlif, zabezpieczenie i jednolita powierzchnia, kiedy obiekt ma wyglądać jak finalny produkt.</p>
+        </div>
+      </article>
+      <article class="finish-item">
+        <div class="fi-num">04</div>
+        <div>
+          <h4 data-i="mat_4_h">Kolor pod projekt</h4>
+          <p data-i="mat_4_p">Paleta dobierana do renderu, wnętrza albo ekspozycji, nie do tego, co akurat jest w magazynie.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec-pad wrap" id="work">
+  <div class="sec-head reveal">
+    <div>
+      <div class="eyebrow" style="margin-bottom:22px;" data-i="work_eyebrow">Realizacje</div>
+      <h2 class="display" data-i="work_h2">Z pliku w przestrzeń.</h2>
+    </div>
+    <p data-i="work_p">Wybór prac zrealizowanych z twórcami zewnętrznymi. Każdy obiekt pozostaje dziełem swojego autora — my dostarczamy materię i precyzję.</p>
+  </div>
+  <div class="gallery reveal" id="gallery">
+    <div class="gitem g-a" data-seed="1"><div class="ph"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="" loading="lazy" decoding="async"></div><div class="corner">01</div><div class="meta"><div class="cat" data-i="g1_cat">Meble</div><div class="gt" data-i="g1_t">Fotel „Monolith”</div><div class="by" data-i="g1_by">proj. studio zewnętrzne</div></div></div>
+    <div class="gitem g-b" data-seed="2"><div class="ph"><img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&amp;fit=crop&amp;w=1100&amp;q=80" alt="" loading="lazy" decoding="async"></div><div class="corner">02</div><div class="meta"><div class="cat" data-i="g2_cat">Praca 3D</div><div class="gt" data-i="g2_t">Rzeźba „Strata”</div><div class="by" data-i="g2_by">proj. artysta 3D</div></div></div>
+    <div class="gitem g-c" data-seed="3"><div class="ph"><img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="" loading="lazy" decoding="async"></div><div class="corner">03</div><div class="meta"><div class="cat" data-i="g3_cat">Meble</div><div class="gt" data-i="g3_t">Stół „Sediment”</div><div class="by" data-i="g3_by">proj. projektant mebli</div></div></div>
+    <div class="gitem g-d" data-seed="4"><div class="ph"><img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="" loading="lazy" decoding="async"></div><div class="corner">04</div><div class="meta"><div class="cat" data-i="g4_cat">Instalacja</div><div class="gt" data-i="g4_t">Ściana „Flux”</div><div class="by" data-i="g4_by">proj. studio architektury</div></div></div>
+    <div class="gitem g-e" data-seed="5"><div class="ph"><img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="" loading="lazy" decoding="async"></div><div class="corner">05</div><div class="meta"><div class="cat" data-i="g5_cat">Praca 3D</div><div class="gt" data-i="g5_t">Obiekt „Vessel”</div><div class="by" data-i="g5_by">proj. designer</div></div></div>
+  </div>
+  <div class="gallery-cta reveal">
+    <p data-i="work_cta_p">Realizacje to placeholdery</p>
+    <a href="kontakt.html" class="btn btn-outline" data-i="work_cta_btn">Pokaż swój projekt</a>
+  </div>
+</section>
+
+<section class="file-section" id="files">
+  <div class="file-intake reveal">
+    <div class="file-intro">
+      <div>
+        <div class="eyebrow" data-i="file_eyebrow">Co możesz wysłać?</div>
+        <h2 data-i="file_h2">Plik wystarczy na start.</h2>
+        <p data-i="file_p">Nie potrzebujesz kompletnej dokumentacji produkcyjnej. Wyślij model, render albo szkic skali — sprawdzimy geometrię i powiemy, co trzeba dopracować przed drukiem.</p>
+      </div>
+      <a href="kontakt.html" class="btn btn-outline" data-i="file_cta">Wyślij projekt</a>
+    </div>
+    <div class="file-types">
+      <article class="file-card">
+        <span data-i="file_1_l">Modele siatkowe</span>
+        <div>
+          <strong>STL</strong>
+          <p data-i="file_1_p">Do szybkiej oceny bryły, skali i potencjalnych problemów z drukiem.</p>
+        </div>
+      </article>
+      <article class="file-card">
+        <span data-i="file_2_l">Model z materiałem</span>
+        <div>
+          <strong>OBJ</strong>
+          <p data-i="file_2_p">Pomaga utrzymać proporcje, orientację i charakter powierzchni z viewportu.</p>
+        </div>
+      </article>
+      <article class="file-card">
+        <span data-i="file_3_l">Geometria CAD</span>
+        <div>
+          <strong>STEP</strong>
+          <p data-i="file_3_p">Najlepsza baza dla elementów technicznych, łączeń i powtarzalnych serii.</p>
+        </div>
+      </article>
+      <article class="file-card">
+        <span data-i="file_4_l">Render / brief</span>
+        <div>
+          <strong>PNG</strong>
+          <p data-i="file_4_p">Wystarczy jako kierunek, jeśli model wymaga jeszcze przygotowania do produkcji.</p>
+        </div>
+      </article>
+      <div class="file-checklist">
+        <div><b data-i="file_c1_l">Wymiary</b><span data-i="file_c1_p">Docelowy rozmiar albo zakres skali.</span></div>
+        <div><b data-i="file_c2_l">Powierzchnia</b><span data-i="file_c2_p">Referencje koloru, faktury i poziomu wygładzenia.</span></div>
+        <div><b data-i="file_c3_l">Termin</b><span data-i="file_c3_p">Deadline, kontekst użycia i orientacyjna liczba sztuk.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process-section" id="process">
+  <div class="wrap">
+    <div class="process-top reveal">
+      <h2 data-i="proc_h2">Od pliku do obiektu w jednym procesie.</h2>
+      <div class="process-badge" data-i="proc_badge">Powered by tresart craft</div>
+    </div>
+    <div class="process-grid reveal">
+      <article class="step">
+        <svg class="process-icon" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <circle cx="42" cy="42" r="24"/><circle cx="78" cy="42" r="24"/><circle cx="42" cy="78" r="24"/><circle cx="78" cy="78" r="24"/>
+          <circle cx="60" cy="60" r="18"/>
+        </svg>
+        <div class="nstep">01</div>
+        <h4 data-i="p1_h">Projekt i plik</h4>
+        <span class="file-tag" data-i="p1_tag">STL / OBJ / STEP</span>
+      </article>
+      <article class="step">
+        <svg class="process-icon" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <ellipse cx="60" cy="30" rx="38" ry="13"/><ellipse cx="60" cy="44" rx="38" ry="13"/><ellipse cx="60" cy="58" rx="38" ry="13"/><ellipse cx="60" cy="72" rx="38" ry="13"/><ellipse cx="60" cy="86" rx="38" ry="13"/>
+        </svg>
+        <div class="nstep">02</div>
+        <h4 data-i="p2_h">Skala i materiał</h4>
+        <span class="file-tag" data-i="p2_tag">Konsultacja techniczna</span>
+      </article>
+      <article class="step">
+        <svg class="process-icon" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <circle cx="60" cy="60" r="42"/><ellipse cx="60" cy="60" rx="18" ry="42"/><path d="M18 60h84M24 42c22 6 50 6 72 0M24 78c22-6 50-6 72 0"/>
+        </svg>
+        <div class="nstep">03</div>
+        <h4 data-i="p3_h">Druk na żądanie</h4>
+        <span class="file-tag" data-i="p3_tag">Robotyczna produkcja</span>
+      </article>
+      <article class="step">
+        <svg class="process-icon" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <g transform="translate(60 60)"><ellipse rx="47" ry="12"/><ellipse rx="47" ry="12" transform="rotate(60)"/><ellipse rx="47" ry="12" transform="rotate(120)"/><circle r="5"/></g>
+        </svg>
+        <div class="nstep">04</div>
+        <h4 data-i="p4_h">Wykończenie i odbiór</h4>
+        <span class="file-tag" data-i="p4_tag">Ręczna kontrola</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec-pad wrap" id="collab">
+  <div class="collab reveal">
+    <div class="collab-text">
+      <div class="eyebrow" data-i="col_eyebrow">Współpraca</div>
+      <h2 class="display" data-i="col_h2">Zostań przy swojej wizji. Resztę bierzemy my.</h2>
+      <p data-i="col_p">Jesteśmy zapleczem produkcyjnym dla twórców. Ty projektujesz, my rozwiązujemy fizykę, materiał i skalę — a Twoje nazwisko zostaje na obiekcie.</p>
+      <div class="collab-list">
+        <div><span class="ci">→</span><span data-i="col_l1">Pełna poufność plików — nigdy nieudostępniane dalej</span></div>
+        <div><span class="ci">→</span><span data-i="col_l2">Twoje autorstwo i marka pozostają nienaruszone</span></div>
+        <div><span class="ci">→</span><span data-i="col_l3">Pojedyncze egzemplarze i małe serie</span></div>
+        <div><span class="ci">→</span><span data-i="col_l4">Doradztwo materiałowe i konstrukcyjne na każdym etapie</span></div>
+      </div>
+    </div>
+    <div class="collab-visual"><canvas id="collabCanvas"></canvas></div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-frame wrap">
+    <div class="contact reveal">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <div class="eyebrow" data-i="con_eyebrow">Kontakt</div>
+          <h2 class="display" data-i="con_h2">Porozmawiajmy o Twoim projekcie.</h2>
+          <p data-i="con_p">Napisz lub zadzwoń. Każde zgłoszenie ogląda człowiek, nie kolejka — odpowiadamy z oceną wykonalności i kolejnymi krokami.</p>
+          <div class="contact-methods">
+            <a href="tel:+00000000000" class="cmethod"><div><div class="cl" data-i="con_phone_l">Telefon</div><div class="cv">+00 000 000 000</div></div><span class="arr">↗</span></a>
+            <a href="mailto:hello@tresart.com" class="cmethod"><div><div class="cl" data-i="con_mail_l">E-mail</div><div class="cv">hello@tresart.com</div></div><span class="arr">↗</span></a>
+          </div>
+          <div class="socials">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+          </div>
+        </div>
+        <div class="contact-right">
+          <h4 data-i="con_studio">Studio</h4>
+          <div class="addr">
+            <span data-i="con_addr1">Pracownia i produkcja</span>
+            <strong>Warszawa · Polska</strong>
+          </div>
+          <div class="hours">
+            <div data-i="con_hours_l">Godziny kontaktu</div>
+            <div data-i="con_hours_v">Pon — Pt · 9:00–18:00 CET</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="logo brand-logo" aria-label="TRES ART"><img src="assets/images/logo2.png" alt="TRES ART" class="brand-logo-img" loading="lazy" decoding="async"></a>
+        <p data-i="foot_p">Digital Foundry materializująca prace artystów, projektantów i architektów w meblach i obiektach.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i="foot_c1">Digital Foundry</h5>
+        <a href="mozliwosci.html" data-i="nav_foundry">Digital Foundry</a>
+        <a href="realizacje.html" data-i="nav_work">Realizacje</a>
+        <a href="proces.html" data-i="nav_process">Proces</a>
+        <a href="materialy.html" data-i="nav_materials">Materiały</a>
+        <a href="dla-tworcow.html" data-i="nav_collab">Dla projektantów</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i="foot_c2">Kontakt</h5>
+        <a href="tel:+00000000000">+00 000 000 000</a>
+        <a href="mailto:hello@tresart.com">hello@tresart.com</a>
+        <a href="kontakt.html" data-i="con_studio">Studio</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i="foot_c3">Social</h5>
+        <div class="footer-social-grid">
+          <a href="https://www.instagram.com/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.4"/><path d="M16.8 7.2h.01"/></svg></a>
+          <a href="https://www.facebook.com/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 8H14a2.4 2.4 0 0 0-2.4 2.4V13H8.8v3.6h2.8V21h3.7v-4.4h2.8L18.7 13h-3.4v-1.8c0-.6.4-1 1-1h2.2V8h-3z"/></svg></a>
+          <a href="https://www.youtube.com/" class="social-icon" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.8" y="7" width="16.4" height="10" rx="3"/><path d="m10.5 10 4.2 2-4.2 2z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/" class="social-icon" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 10h3.2v9H5.5zM7.1 6.2v.1M11.2 10h3.1v1.4c.5-.9 1.4-1.6 2.8-1.6 2.2 0 3.4 1.5 3.4 4.2v5h-3.2v-4.5c0-1.2-.5-1.8-1.5-1.8s-1.5.7-1.5 1.8V19h-3.1z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 TRES ART — <span data-i="foot_rights">Wszelkie prawa zastrzeżone.</span></span>
+      <span class="foot-made" data-i="foot_made">Tworzone w Milan & Warszawa</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N={
+ pl:{
+  nav_foundry:"Możliwości",nav_work:"Realizacje",nav_process:"Proces",nav_materials:"Materiały",nav_collab:"Dla twórców",nav_cta:"Kontakt",
+  hero_eyebrow:"Digital Foundry — Warszawa",hero_h1a:"Twój render",hero_h1b:"schodzi",hero_h1c:"z ekranu.",
+  hero_sub:"Wielkoformatowy druk 3D dla grafików, projektantów i artystów 3D. Z Twojego pliku robimy fizyczny obiekt — wierny co do detalu, gotowy do portfolio, galerii i klienta.",
+  hero_cta1:"Wyceń projekt",hero_cta2:"Zobacz realizacje",scroll:"Przewiń",
+  manifest_a:"Tradycyjna produkcja narzuca ograniczenia.",
+  manifest_b:"usuwa je, zamieniając projekty grafików, architektów i artystów w monumentalne meble oraz formy przestrzenne.",
+  manifest_stat1_l:"Skala druku",manifest_stat1_v:"2.5M",manifest_stat2_l:"Barier produkcji",manifest_stat2_v:"0",manifest_stat3_l:"Wierność pliku",manifest_stat3_v:"1:1",
+  manifest_card1_t:"Na żądanie",manifest_card1_p:"Ty projektujesz bez limitów, my drukujemy z pedantyczną precyzją.",manifest_card2_t:"Materia",manifest_card3_t:"Detal",manifest_card4_t:"Skala",
+  aud_eyebrow:"Dla kogo pracujemy",aud_h2:"Ty projektujesz. My drukujemy.",aud_p:"Jesteśmy zapleczem, nie konkurencją. Bierzemy Twój model i oddajemy go w realu — bez przerabiania Twojej wizji, bez odbierania Ci autorstwa.",
+  aud1_h:"Graficy i artyści 3D",aud1_p:"Model, który żył tylko w viewportcie, dostaje skalę, ciężar i powierzchnię. To samo, co renderowałeś — tylko że można to wziąć do ręki.",
+  aud2_h:"Projektanci produktu i mebli",aud2_p:"Prototypy, egzemplarze autorskie i krótkie serie. Bez form, bez setupu — od pliku do gotowego obiektu w jednym przebiegu.",
+  aud3_h:"Designerzy i studia",aud3_p:"Obiekty, elementy ekspozycji i instalacje w skali, której zwykły druk nie udźwignie. Ty dajesz koncept, my ogarniamy produkcję.",
+  cap_eyebrow:"Możliwości",cap_h2:"Robimy to, czego inni nie wydrukują.",cap_p:"Trzy rzeczy, które dla Ciebie liczą się najbardziej: skala, wierność detalu i to, że obiekt wygląda jak Twój render — nie jak wydruk.",
+  b1_num:"Skala",b1_unit:"METRA",b1_h:"Druk wielkoformatowy",b1_p:"Jedna ciągła przestrzeń robocza do dwóch i pół metra. Meble, rzeźby i obiekty drukowane w całości — bez sklejania, bez dzielenia Twojego modelu na kawałki.",
+  b2_num:"Wierność",b2_h:"Tak jak w renderze",b2_p:"Trzymamy detal, proporcje i krawędzie zgodnie z plikiem. Wykończenie i kolor dobieramy pod Twój projekt — od surowego matu po gładką, jednolitą powierzchnię.",
+  b3_num:"Faktura",b3_h:"Linia warstwy",b3_p:"Linie druku to nie błąd do zamaskowania. Możemy je wyeksponować jako świadomy efekt albo wygładzić do zera — Twoja decyzja, nie ograniczenie technologii.",
+  b4_num:"Wykończenie",b4_h:"Robione ręcznie",b4_p:"Po druku każdy obiekt przechodzi przez ręce — szlif, zabezpieczenie, wykończenie. Wychodzi gotowy pod zdjęcie, ekspozycję i klienta.",b4_tag:"Atelier Milan",
+  mat_eyebrow:"Materiały i wykończenia",mat_h2:"Powierzchnia robi różnicę.",mat_p:"Dobieramy materiał, kolor i fakturę pod projekt: od surowej, widocznej linii warstwy po gładkie wykończenie gotowe do zdjęć, ekspozycji i klienta.",
+  mat_stamp:"Biblioteka próbek",mat_visual_h:"Mat. Linia. Kolor.",mat_visual_p:"Próbki ustalamy przed drukiem, żeby fizyczna powierzchnia wspierała render, a nie przypadek procesu.",
+  mat_1_h:"Biokompozyty",mat_1_p:"Materiały techniczne i recyklingowe dobierane pod trwałość, wagę i charakter obiektu.",
+  mat_2_h:"Mat surowy",mat_2_p:"Warstwa i ślad druku jako świadomy efekt, kiedy projekt ma pokazać technologię.",
+  mat_3_h:"Gładkie wykończenie",mat_3_p:"Szlif, zabezpieczenie i jednolita powierzchnia, kiedy obiekt ma wyglądać jak finalny produkt.",
+  mat_4_h:"Kolor pod projekt",mat_4_p:"Paleta dobierana do renderu, wnętrza albo ekspozycji, nie do tego, co akurat jest w magazynie.",
+  work_eyebrow:"Realizacje",work_h2:"Z pliku w obiekt.",work_p:"Wybór prac zrealizowanych z twórcami zewnętrznymi. Każdy obiekt to projekt swojego autora — my dodajemy tylko produkcję i precyzję.",
+  g1_cat:"Meble",g1_t:"Fotel „Monolith”",g1_by:"proj. studio zewnętrzne",
+  g2_cat:"Praca 3D",g2_t:"Rzeźba „Strata”",g2_by:"proj. artysta 3D",
+  g3_cat:"Meble",g3_t:"Stół „Sediment”",g3_by:"proj. projektant mebli",
+  g4_cat:"Instalacja",g4_t:"Ściana „Flux”",g4_by:"proj. studio designu",
+  g5_cat:"Praca 3D",g5_t:"Obiekt „Vessel”",g5_by:"proj. designer",
+  work_cta_p:"Realizacje to placeholdery.",work_cta_btn:"Pokaż swój projekt",
+  file_eyebrow:"Co możesz wysłać?",file_h2:"Plik wystarczy na start.",file_p:"Nie potrzebujesz kompletnej dokumentacji produkcyjnej. Wyślij model, render albo szkic skali — sprawdzimy geometrię i powiemy, co trzeba dopracować przed drukiem.",file_cta:"Wyślij projekt",
+  file_1_l:"Modele siatkowe",file_1_p:"Do szybkiej oceny bryły, skali i potencjalnych problemów z drukiem.",
+  file_2_l:"Model z materiałem",file_2_p:"Pomaga utrzymać proporcje, orientację i charakter powierzchni z viewportu.",
+  file_3_l:"Geometria CAD",file_3_p:"Najlepsza baza dla elementów technicznych, łączeń i powtarzalnych serii.",
+  file_4_l:"Render / brief",file_4_p:"Wystarczy jako kierunek, jeśli model wymaga jeszcze przygotowania do produkcji.",
+  file_c1_l:"Wymiary",file_c1_p:"Docelowy rozmiar albo zakres skali.",
+  file_c2_l:"Powierzchnia",file_c2_p:"Referencje koloru, faktury i poziomu wygładzenia.",
+  file_c3_l:"Termin",file_c3_p:"Deadline, kontekst użycia i orientacyjna liczba sztuk.",
+  proc_eyebrow:"Jak to działa",proc_h2:"Od pliku do obiektu w jednym procesie.",proc_p:"Cztery kroki od pliku na Twoim dysku do gotowego obiektu.",proc_badge:"tresart",
+  p1_h:"Projekt i plik",p1_p:"Wrzuć swoją siatkę 3D — gotowy model albo wstępny koncept. Oglądamy, sprawdzamy i wracamy z konkretami.",p1_tag:"STL / OBJ / STEP",
+  p2_h:"Skala i materiał",p2_p:"Wspólnie dobieramy skalę, wykończenie i materiał. Mówimy, co zadziała, a gdzie warto poprawić geometrię — zanim ruszy druk.",p2_tag:"Konsultacja techniczna",
+  p3_h:"Druk na żądanie",p3_p:"Druk wielkoformatowy i wykończenie ręczne. Odbierasz gotowy obiekt — wierny Twojemu projektowi, dopięty na ostatni detal.",p3_tag:"Robotyczna produkcja",p4_h:"Wykończenie i odbiór",p4_tag:"Ręczna kontrola",
+  col_eyebrow:"Współpraca",col_h2:"Twój projekt zostaje Twój.",col_p:"Jesteśmy działem produkcji dla twórców. Ty robisz projekt, my bierzemy na siebie fizykę, materiał i skalę — a Twoje nazwisko zostaje na obiekcie.",
+  col_l1:"Twoje pliki zostają u nas — nigdy nie idą dalej",col_l2:"Pełne autorstwo i marka po Twojej stronie",col_l3:"Od jednego egzemplarza po krótką serię",col_l4:"Doradztwo techniczne, żeby render dało się wydrukować",
+  con_eyebrow:"Kontakt",con_h2:"Masz plik? Pogadajmy.",con_p:"Napisz albo zadzwoń. Każde zgłoszenie ogląda człowiek, nie kolejka — wracamy z oceną wykonalności i wyceną.",
+  con_phone_l:"Telefon",con_mail_l:"E-mail",con_studio:"Studio",con_addr1:"Pracownia i produkcja",con_hours_l:"Godziny kontaktu",con_hours_v:"Pon — Pt · 9:00–18:00 CET",
+  foot_p:"Digital Foundry , która zamienia projekty grafików, designerów i artystów 3D w fizyczne meble i obiekty.",foot_c1:"Studio",foot_c2:"Kontakt",foot_c3:"Social",foot_rights:"Wszelkie prawa zastrzeżone.",foot_made:"Tworzone w Warszawie",
+  marquee:["Druk wielkoformatowy","Do 2,5 metra","Wierność detalu","Meble autorskie","Rzeźba i obiekty","Prototypy","Krótkie serie","Wykończenie ręczne"]
+ },
+ en:{
+  nav_foundry:"Capabilities",nav_work:"Work",nav_process:"Process",nav_materials:"Materials",nav_collab:"For Creators",nav_cta:"Contact",
+  hero_eyebrow:"Digital Foundry — Milan & Warsaw",hero_h1a:"Your render,",hero_h1b:"off",hero_h1c:"the screen.",
+  hero_sub:"Large-format 3D printing for graphic artists, designers and 3D artists. We turn your file into a physical object — faithful to the detail, ready for your portfolio, a gallery and a client.",
+  hero_cta1:"Get a quote",hero_cta2:"View work",scroll:"Scroll",
+  manifest_a:"Traditional production imposes limits.",
+  manifest_b:"removes them, turning artists' and architects' digital projects into monumental furniture and spatial forms.",
+  manifest_stat1_l:"Print scale",manifest_stat1_v:"2.5M",manifest_stat2_l:"Production barriers",manifest_stat2_v:"0",manifest_stat3_l:"File fidelity",manifest_stat3_v:"1:1",
+  manifest_card1_t:"On-demand",manifest_card1_p:"You design without limits, we print with meticulous precision.",manifest_card2_t:"Material",manifest_card3_t:"Detail",manifest_card4_t:"Scale",
+  aud_eyebrow:"Who we make for",aud_h2:"You design. We print.",aud_p:"We are your production arm, not your competition. We take your model and bring it into the real — without reworking your vision, without taking your authorship.",
+  aud1_h:"Graphic & 3D artists",aud1_p:"A model that only lived in the viewport gets scale, weight and surface. The same thing you rendered — except now you can hold it.",
+  aud2_h:"Product & furniture designers",aud2_p:"Prototypes, signature pieces and short runs. No molds, no setup — from file to finished object in a single pass.",
+  aud3_h:"Designers & studios",aud3_p:"Objects, display elements and installations at a scale ordinary printing can't carry. You bring the concept, we handle production.",
+  cap_eyebrow:"Capabilities",cap_h2:"We make what others won't print.",cap_p:"The three things that matter most to you: scale, fidelity to the detail, and an object that looks like your render — not like a print.",
+  b1_num:"Scale",b1_unit:"METERS",b1_h:"Large-format printing",b1_p:"A single continuous build envelope up to two and a half meters. Furniture, sculpture and objects printed whole — no gluing, no slicing your model into parts.",
+  b2_num:"Fidelity",b2_h:"Just like the render",b2_p:"We hold the detail, proportions and edges exactly to the file. Finish and color are tuned to your design — from raw matte to a smooth, uniform surface.",
+  b3_num:"Texture",b3_h:"The layer line",b3_p:"Print lines aren't a flaw to mask. We can foreground them as a deliberate effect or smooth them to nothing — your call, not a limit of the tech.",
+  b4_num:"Finishing",b4_h:"Done by hand",b4_p:"After printing, every object passes through human hands — sanded, sealed, finished. It leaves ready for the photo, the show and the client.",b4_tag:"Milan Atelier",
+  mat_eyebrow:"Materials & finishes",mat_h2:"The surface carries the piece.",mat_p:"We tune material, color and texture to the project: from a raw visible layer line to a smooth finish ready for photos, exhibition and clients.",
+  mat_stamp:"Sample library",mat_visual_h:"Matte. Line. Color.",mat_visual_p:"Samples are set before printing so the physical surface supports the render, not the accident of the process.",
+  mat_1_h:"Biocomposites",mat_1_p:"Technical and recycled materials selected for durability, weight and the character of the object.",
+  mat_2_h:"Raw matte",mat_2_p:"Layer lines and print trace as a deliberate effect when the project should show the technology.",
+  mat_3_h:"Smooth finish",mat_3_p:"Sanding, sealing and a uniform surface when the object needs to read as a finished product.",
+  mat_4_h:"Project-matched color",mat_4_p:"A palette matched to the render, interior or exhibition, not to whatever happens to be in stock.",
+  work_eyebrow:"Work",work_h2:"From file to object.",work_p:"A selection of pieces made with external creators. Every object is its author's design — we add only the production and the precision.",
+  g1_cat:"Furniture",g1_t:"\u201CMonolith\u201D Chair",g1_by:"by external studio",
+  g2_cat:"3D Work",g2_t:"\u201CStrata\u201D Sculpture",g2_by:"by 3D artist",
+  g3_cat:"Furniture",g3_t:"\u201CSediment\u201D Table",g3_by:"by furniture designer",
+  g4_cat:"Installation",g4_t:"\u201CFlux\u201D Wall",g4_by:"by design studio",
+  g5_cat:"3D Work",g5_t:"\u201CVessel\u201D Object",g5_by:"by designer",
+  work_cta_p:"These pieces are placeholders — swap them for photos of your prints, add creator names and categories.",work_cta_btn:"Show us your project",
+  file_eyebrow:"What can you send?",file_h2:"A file is enough to start.",file_p:"You do not need complete production documentation. Send a model, render or scale sketch — we will review the geometry and tell you what needs work before printing.",file_cta:"Send a project",
+  file_1_l:"Mesh models",file_1_p:"For a quick read on volume, scale and potential print issues.",
+  file_2_l:"Textured model",file_2_p:"Helps preserve proportions, orientation and the surface character from the viewport.",
+  file_3_l:"CAD geometry",file_3_p:"The best base for technical elements, joins and repeatable short runs.",
+  file_4_l:"Render / brief",file_4_p:"Enough as a direction when the model still needs production preparation.",
+  file_c1_l:"Dimensions",file_c1_p:"Target size or scale range.",
+  file_c2_l:"Surface",file_c2_p:"References for color, texture and smoothing level.",
+  file_c3_l:"Timing",file_c3_p:"Deadline, usage context and approximate quantity.",
+  proc_eyebrow:"How it works",proc_h2:"From file to object through one production flow.",proc_p:"Four steps from a file on your drive to a finished object.",proc_badge:"Powered by tresart craft",
+  p1_h:"Design and file",p1_p:"Drop your 3D mesh — a finished model or a rough concept. We review it, check it and come back with specifics.",p1_tag:"STL / OBJ / STEP",
+  p2_h:"Scale and material",p2_p:"Together we pick scale, finish and material. We tell you what will work and where the geometry needs a tweak — before printing starts.",p2_tag:"Technical consultation",
+  p3_h:"Print on demand",p3_p:"Large-format printing and hand-finishing. You collect a finished object — faithful to your design, dialed in to the last detail.",p3_tag:"Robotic production",p4_h:"Finish and handoff",p4_tag:"Manual control",
+  col_eyebrow:"Collaboration",col_h2:"Your design stays yours.",col_p:"We are the production department for creators. You do the design; we take on the physics, material and scale — and your name stays on the object.",
+  col_l1:"Your files stay with us — never shared onward",col_l2:"Full authorship and brand on your side",col_l3:"From a single piece to a short run",col_l4:"Technical advice to make the render printable",
+  con_eyebrow:"Contact",con_h2:"Got a file? Let's talk.",con_p:"Write or call. Every enquiry is seen by a person, not a queue — we come back with a feasibility read and a quote.",
+  con_phone_l:"Phone",con_mail_l:"Email",con_studio:"Studio",con_addr1:"Workshop & production",con_hours_l:"Contact hours",con_hours_v:"Mon — Fri · 9:00–18:00 CET",
+  foot_p:"A digital foundry turning the work of graphic artists, designers and 3D artists into physical furniture and objects.",foot_c1:"Studio",foot_c2:"Contact",foot_c3:"Social",foot_rights:"All rights reserved.",foot_made:"Crafted in Milan & Warsaw",
+  marquee:["Large-format printing","Up to 2.5 meters","Detail fidelity","Signature furniture","Sculpture & objects","Prototypes","Short runs","Hand finishing"]
+ },
+ de:{
+  nav_foundry:"Leistungen",nav_work:"Arbeiten",nav_process:"Prozess",nav_materials:"Materialien",nav_collab:"F\u00FCr Kreative",nav_cta:"Kontakt",
+  hero_eyebrow:"Digitale Gie\u00DFerei — Mailand & Warschau",hero_h1a:"Ihr Render,",hero_h1b:"raus",hero_h1c:"aus dem Screen.",
+  hero_sub:"Gro\u00DFformatiger 3D-Druck f\u00FCr Grafiker, Designer und 3D-K\u00FCnstler. Aus Ihrer Datei machen wir ein physisches Objekt — detailtreu, bereit f\u00FCrs Portfolio, die Galerie und den Kunden.",
+  hero_cta1:"Angebot anfragen",hero_cta2:"Arbeiten ansehen",scroll:"Scrollen",
+  manifest_a:"Traditionelle Produktion setzt Grenzen.",
+  manifest_b:"hebt sie auf und verwandelt Entw\u00FCrfe von Kreativen und Architekten in monumentale M\u00F6bel und r\u00E4umliche Formen.",
+  manifest_stat1_l:"Druckma\u00DFstab",manifest_stat1_v:"2.5M",manifest_stat2_l:"Produktionsgrenzen",manifest_stat2_v:"0",manifest_stat3_l:"Dateitreue",manifest_stat3_v:"1:1",
+  manifest_card1_t:"On-demand",manifest_card1_p:"Sie entwerfen ohne Limits, wir drucken mit pedantischer Pr\u00E4zision.",manifest_card2_t:"Material",manifest_card3_t:"Detail",manifest_card4_t:"Ma\u00DFstab",
+  aud_eyebrow:"F\u00FCr wen wir fertigen",aud_h2:"Sie gestalten. Wir drucken.",aud_p:"Wir sind Ihre Produktion, nicht Ihre Konkurrenz. Wir nehmen Ihr Modell und bringen es in die reale Welt — ohne Ihre Vision umzubauen, ohne Ihre Urheberschaft anzutasten.",
+  aud1_h:"Grafiker & 3D-K\u00FCnstler",aud1_p:"Ein Modell, das nur im Viewport lebte, bekommt Ma\u00DFstab, Gewicht und Oberfl\u00E4che. Genau das, was Sie gerendert haben — nur zum Anfassen.",
+  aud2_h:"Produkt- & M\u00F6beldesigner",aud2_p:"Prototypen, Einzelst\u00FCcke und Kleinserien. Ohne Formen, ohne Setup — von der Datei zum fertigen Objekt in einem Durchgang.",
+  aud3_h:"Designer & Studios",aud3_p:"Objekte, Display-Elemente und Installationen in einem Ma\u00DFstab, den normaler Druck nicht tr\u00E4gt. Sie liefern das Konzept, wir die Produktion.",
+  cap_eyebrow:"Leistungen",cap_h2:"Wir fertigen, was andere nicht drucken.",cap_p:"Die drei Dinge, die f\u00FCr Sie z\u00E4hlen: Ma\u00DFstab, Detailtreue und ein Objekt, das aussieht wie Ihr Render — nicht wie ein Druck.",
+  b1_num:"Ma\u00DFstab",b1_unit:"METER",b1_h:"Gro\u00DFformatdruck",b1_p:"Ein durchgehender Bauraum bis zu zweieinhalb Metern. M\u00F6bel, Skulpturen und Objekte am St\u00FCck gedruckt — kein Kleben, kein Zerteilen Ihres Modells.",
+  b2_num:"Detailtreue",b2_h:"Wie im Render",b2_p:"Wir halten Detail, Proportionen und Kanten exakt zur Datei. Finish und Farbe stimmen wir auf Ihren Entwurf ab — von rohem Matt bis zur glatten, gleichm\u00E4\u00DFigen Oberfl\u00E4che.",
+  b3_num:"Textur",b3_h:"Die Schichtlinie",b3_p:"Drucklinien sind kein Makel zum Kaschieren. Wir betonen sie als bewussten Effekt oder gl\u00E4tten sie auf null — Ihre Entscheidung, keine Grenze der Technik.",
+  b4_num:"Finish",b4_h:"Von Hand gemacht",b4_p:"Nach dem Druck geht jedes Objekt durch H\u00E4nde — geschliffen, versiegelt, vollendet. Es geht bereit f\u00FCrs Foto, die Ausstellung und den Kunden.",b4_tag:"Atelier Mailand",
+  mat_eyebrow:"Materialien & Finish",mat_h2:"Die Oberfläche trägt das Objekt.",mat_p:"Wir stimmen Material, Farbe und Textur auf das Projekt ab: von der rohen sichtbaren Schichtlinie bis zum glatten Finish für Foto, Ausstellung und Kunde.",
+  mat_stamp:"Musterbibliothek",mat_visual_h:"Matt. Linie. Farbe.",mat_visual_p:"Muster legen wir vor dem Druck fest, damit die physische Oberfläche den Render unterstützt und nicht dem Zufall des Prozesses folgt.",
+  mat_1_h:"Biokomposite",mat_1_p:"Technische und recycelte Materialien, gewählt nach Haltbarkeit, Gewicht und Charakter des Objekts.",
+  mat_2_h:"Roh matt",mat_2_p:"Schicht und Druckspur als bewusster Effekt, wenn das Projekt die Technologie zeigen soll.",
+  mat_3_h:"Glattes Finish",mat_3_p:"Schliff, Versiegelung und eine gleichmäßige Oberfläche, wenn das Objekt wie ein fertiges Produkt wirken soll.",
+  mat_4_h:"Farbe nach Entwurf",mat_4_p:"Eine Palette passend zu Render, Interieur oder Ausstellung, nicht zu dem, was gerade auf Lager ist.",
+  work_eyebrow:"Arbeiten",work_h2:"Von der Datei zum Objekt.",work_p:"Eine Auswahl von Arbeiten mit externen Kreativen. Jedes Objekt ist der Entwurf seines Autors — wir liefern nur Produktion und Pr\u00E4zision.",
+  g1_cat:"M\u00F6bel",g1_t:"Sessel \u201EMonolith\u201C",g1_by:"Entwurf: externes Studio",
+  g2_cat:"3D-Arbeit",g2_t:"Skulptur \u201EStrata\u201C",g2_by:"Entwurf: 3D-K\u00FCnstler",
+  g3_cat:"M\u00F6bel",g3_t:"Tisch \u201ESediment\u201C",g3_by:"Entwurf: M\u00F6beldesigner",
+  g4_cat:"Installation",g4_t:"Wand \u201EFlux\u201C",g4_by:"Entwurf: Designstudio",
+  g5_cat:"3D-Arbeit",g5_t:"Objekt \u201EVessel\u201C",g5_by:"Entwurf: Designer",
+  work_cta_p:"Diese Arbeiten sind Platzhalter — ersetzen Sie sie durch Fotos Ihrer Drucke, mit Namen und Kategorien.",work_cta_btn:"Zeigen Sie Ihr Projekt",
+  file_eyebrow:"Was können Sie senden?",file_h2:"Eine Datei reicht für den Start.",file_p:"Sie brauchen keine komplette Produktionsdokumentation. Senden Sie Modell, Render oder Maßskizze — wir prüfen die Geometrie und sagen, was vor dem Druck angepasst werden sollte.",file_cta:"Projekt senden",
+  file_1_l:"Mesh-Modelle",file_1_p:"Für eine schnelle Einschätzung von Volumen, Maßstab und möglichen Druckproblemen.",
+  file_2_l:"Modell mit Material",file_2_p:"Hilft, Proportionen, Ausrichtung und Oberflächencharakter aus dem Viewport zu halten.",
+  file_3_l:"CAD-Geometrie",file_3_p:"Die beste Basis für technische Elemente, Verbindungen und wiederholbare Kleinserien.",
+  file_4_l:"Render / Brief",file_4_p:"Genug als Richtung, wenn das Modell noch für die Produktion vorbereitet werden muss.",
+  file_c1_l:"Maße",file_c1_p:"Zielgröße oder Maßstabsbereich.",
+  file_c2_l:"Oberfläche",file_c2_p:"Referenzen für Farbe, Textur und Glättungsgrad.",
+  file_c3_l:"Timing",file_c3_p:"Deadline, Nutzungskontext und ungefähre Stückzahl.",
+  proc_eyebrow:"So l\u00E4uft es",proc_h2:"Von der Datei zum Objekt in einem Prozess.",proc_p:"Vier Schritte von einer Datei zum fertigen Objekt.",proc_badge:"Powered by tresart craft",
+  p1_h:"Entwurf und Datei",p1_p:"Schicken Sie Ihr 3D-Mesh — fertiges Modell oder grobes Konzept. Wir pr\u00FCfen es und kommen mit konkreten Antworten zur\u00FCck.",p1_tag:"STL / OBJ / STEP",
+  p2_h:"Ma\u00DFstab und Material",p2_p:"Gemeinsam w\u00E4hlen wir Ma\u00DFstab, Finish und Material. Wir sagen, was funktioniert und wo die Geometrie nachjustiert werden sollte — bevor der Druck startet.",p2_tag:"Technische Beratung",
+  p3_h:"Druck auf Abruf",p3_p:"Gro\u00DFformatdruck und Handfinish. Sie erhalten ein fertiges Objekt — treu zu Ihrem Entwurf, bis ins letzte Detail abgestimmt.",p3_tag:"Robotische Produktion",p4_h:"Finish und \u00DCbergabe",p4_tag:"Manuelle Kontrolle",
+  col_eyebrow:"Zusammenarbeit",col_h2:"Ihr Entwurf bleibt Ihrer.",col_p:"Wir sind die Produktionsabteilung f\u00FCr Kreative. Sie gestalten; wir \u00FCbernehmen Physik, Material und Ma\u00DFstab — und Ihr Name bleibt auf dem Objekt.",
+  col_l1:"Ihre Dateien bleiben bei uns — nie weitergegeben",col_l2:"Volle Urheberschaft und Marke auf Ihrer Seite",col_l3:"Vom Einzelst\u00FCck bis zur Kleinserie",col_l4:"Technische Beratung, damit der Render druckbar wird",
+  con_eyebrow:"Kontakt",con_h2:"Datei da? Reden wir.",con_p:"Schreiben oder rufen Sie an. Jede Anfrage sieht ein Mensch, keine Warteschlange — wir kommen mit Machbarkeitseinsch\u00E4tzung und Angebot zur\u00FCck.",
+  con_phone_l:"Telefon",con_mail_l:"E-Mail",con_studio:"Studio",con_addr1:"Werkstatt & Produktion",con_hours_l:"Kontaktzeiten",con_hours_v:"Mo — Fr · 9:00–18:00 MEZ",
+  foot_p:"Eine digitale Gie\u00DFerei, die Arbeiten von Grafikern, Designern und 3D-K\u00FCnstlern in physische M\u00F6bel und Objekte verwandelt.",foot_c1:"Studio",foot_c2:"Kontakt",foot_c3:"Social",foot_rights:"Alle Rechte vorbehalten.",foot_made:"Gefertigt in Mailand & Warschau",
+  marquee:["Gro\u00DFformatdruck","Bis 2,5 Meter","Detailtreue","Designerm\u00F6bel","Skulptur & Objekte","Prototypen","Kleinserien","Handfinish"]
+ }
+};
+
+function setLang(lang){
+  const dict=I18N[lang];
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i]').forEach(el=>{
+    const k=el.getAttribute('data-i');
+    if(dict[k]!==undefined && typeof dict[k]==='string') el.textContent=dict[k];
+  });
+  const mt=document.getElementById('marqueeTrack');
+  const items=dict.marquee;
+  const block='<span>'+items.join('</span><span>')+'</span>';
+  mt.innerHTML=block+block;
+  document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+}
+document.querySelectorAll('#lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+document.getElementById('menuToggle').addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+/* theme toggle — drives CSS vars + canvas palette */
+const themeBtn=document.getElementById('themeToggle');
+let isLight=false;
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme',isLight?'light':'dark');
+}
+themeBtn.addEventListener('click',()=>{isLight=!isLight;applyTheme();});
+// canvas palette resolves live from the active theme
+function pal(){
+  return isLight
+    ? {ink:'33,30,26', copper:'128,93,53', plate:'#E8E1D5', light:'rgba(128,93,53,', cool:'rgba(50,63,58,', vig:'rgba(93,85,75,', fill:'rgba(128,93,53,0.055)', fillStrong:'rgba(33,30,26,0.075)', lineBase:0.20, lineAmp:0.52, wire:0.18, wireAlt:0.22, beam:0.13, glow:0.68, galleryLine:0.07, galleryLineAmp:0.16, galleryGlow:0.24, galleryVig:0.16}
+    : {ink:'244,240,234', copper:'168,138,100', plate:'#1A1A1A', light:'rgba(168,138,100,', cool:'rgba(168,138,100,', vig:'rgba(0,0,0,', fill:'rgba(168,138,100,0.018)', fillStrong:'rgba(244,240,234,0.022)', lineBase:0.10, lineAmp:0.40, wire:0.08, wireAlt:0.10, beam:0.06, glow:0.55, galleryLine:0.04, galleryLineAmp:0.10, galleryGlow:0.16, galleryVig:0.55};
+}
+
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const ll=document.getElementById('layerlines');
+if(ll){for(let i=0;i<60;i++){const d=document.createElement('div');d.className='ll';d.style.top=(i*1.7+1)+'%';d.style.opacity=(0.25+Math.random()*0.6).toFixed(2);ll.appendChild(d);}}
+
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const cv=document.getElementById('foundryCanvas'),ctx=cv.getContext('2d');
+let W,H,DPR;
+function rsize(){DPR=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+rsize();window.addEventListener('resize',rsize);
+let t=0;
+function drawHero(){
+  ctx.clearRect(0,0,W,H);
+  const P=pal();
+  const heroScale=W<720?1.2:1.52;
+  const cx=W*(W<720?0.72:0.7),cy=H*0.58;
+  ctx.save();ctx.translate(cx,cy);
+  const layers=46;
+  const bodyGlow=ctx.createRadialGradient(0,20*heroScale,30*heroScale,0,8*heroScale,330*heroScale);
+  bodyGlow.addColorStop(0,P.fillStrong);
+  bodyGlow.addColorStop(0.58,P.fill);
+  bodyGlow.addColorStop(1,'rgba('+P.ink+',0)');
+  ctx.fillStyle=bodyGlow;
+  ctx.beginPath();ctx.ellipse(0,-8*heroScale,220*heroScale,250*heroScale,0,0,Math.PI*2);ctx.fill();
+  for(let i=0;i<layers;i++){
+    const prog=i/layers;const ry=(120-prog*112)*heroScale;const rx=(170-prog*40)*heroScale;const yy=(-prog*200+90)*heroScale;
+    const built=(Math.sin(t*0.01-i*0.18)+1)/2;
+    ctx.beginPath();ctx.ellipse(0,yy,rx,ry*0.32,0,0,Math.PI*2);
+    ctx.strokeStyle=P.light+(P.lineBase+built*P.lineAmp).toFixed(3)+')';
+    ctx.lineWidth=isLight?1.35:1.1;ctx.stroke();
+  }
+  ctx.lineWidth=isLight?0.95:0.7;
+  for(let s=0;s<7;s++){
+    const k=(s-3)/3;
+    ctx.strokeStyle=(s%3===1?P.cool+P.wireAlt+')':'rgba('+P.ink+','+P.wire+')');
+    ctx.beginPath();
+    for(let i=0;i<layers;i++){
+      const prog=i/(layers-1);const rx=(170-prog*40)*heroScale;const yy=(-prog*200+90)*heroScale;
+      const x=Math.sin(k*Math.PI/2)*rx*0.56;
+      i===0?ctx.moveTo(x,yy):ctx.lineTo(x,yy);
+    }
+    ctx.stroke();
+  }
+  ctx.restore();
+  const headAngle=t*0.05;const topY=cy-(200*heroScale)*((Math.sin(t*0.006)+1)/2);const hr=150*heroScale;
+  const hx=cx+Math.cos(headAngle)*hr;const hy=topY+Math.sin(headAngle)*hr*0.32;
+  const g=ctx.createRadialGradient(hx,hy,0,hx,hy,90*heroScale);
+  g.addColorStop(0,P.light+P.glow+')');g.addColorStop(0.4,P.light+'0.22)');g.addColorStop(1,P.light+'0)');
+  ctx.fillStyle=g;ctx.fillRect(hx-90*heroScale,hy-90*heroScale,180*heroScale,180*heroScale);
+  ctx.fillStyle='rgba('+P.copper+',0.95)';ctx.beginPath();ctx.arc(hx,hy,2.4,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle=P.light+'0.35)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(hx,hy-160*heroScale);ctx.lineTo(hx,hy);ctx.stroke();
+  ctx.strokeStyle='rgba('+P.ink+','+P.beam+')';ctx.lineWidth=isLight?6:8;ctx.beginPath();
+  ctx.moveTo(W*0.95,H*0.1);ctx.lineTo(cx+Math.cos(headAngle)*hr*1.4,topY-60*heroScale+Math.sin(headAngle)*40*heroScale);ctx.lineTo(hx,hy);ctx.stroke();
+  if(!reduce){t+=1;requestAnimationFrame(drawHero);}
+}
+if(reduce){t=300;drawHero();}else{drawHero();}
+
+const cc=document.getElementById('collabCanvas');
+if(cc){
+  const cg=cc.getContext('2d');let cW,cH,cD,ct=0;
+  function csize(){cD=Math.min(window.devicePixelRatio||1,2);cW=cc.clientWidth;cH=cc.clientHeight;cc.width=cW*cD;cc.height=cH*cD;cg.setTransform(cD,0,0,cD,0,0);}
+  csize();window.addEventListener('resize',csize);
+  function drawCollab(){
+    cg.clearRect(0,0,cW,cH);
+    const P=pal();
+    const cx=cW/2,cy=cH/2;const rings=38;const rot=ct*0.004;
+    const formWidth=Math.min(cW*0.68,cH*0.58);
+    const verticalSpan=Math.min(cH*0.64,cW*0.72);
+    const minRx=formWidth*0.12,maxRx=formWidth*0.5;
+    const halo=cg.createRadialGradient(cx,cy,formWidth*0.12,cx,cy,formWidth*0.82);
+    halo.addColorStop(0,P.fillStrong);
+    halo.addColorStop(0.64,P.fill);
+    halo.addColorStop(1,'rgba('+P.ink+',0)');
+    cg.fillStyle=halo;cg.fillRect(0,0,cW,cH);
+    for(let i=0;i<rings;i++){
+      const p=i/rings;const y=cy+(p-0.5)*verticalSpan;
+      const wob=Math.sin(p*Math.PI*3+rot*2)*0.18+1;
+      const rx=(minRx+Math.sin(p*Math.PI)*(maxRx-minRx))*wob;
+      const ry=rx*0.18;
+      cg.beginPath();cg.ellipse(cx,y,rx,ry,0,0,Math.PI*2);
+      const a=P.lineBase+Math.sin(p*Math.PI)*P.lineAmp;
+      cg.strokeStyle=P.light+a.toFixed(3)+')';cg.lineWidth=isLight?1.25:1;cg.stroke();
+    }
+    cg.lineWidth=isLight?1.1:1;
+    for(let s=0;s<8;s++){
+      const ang=rot+s/8*Math.PI*2;
+      cg.strokeStyle=(s%3===1?P.cool+P.wireAlt+')':'rgba('+P.ink+','+P.wire+')');
+      cg.beginPath();
+      for(let i=0;i<=rings;i++){
+        const p=i/rings;const y=cy+(p-0.5)*verticalSpan;
+        const wob=Math.sin(p*Math.PI*3+rot*2)*0.18+1;
+        const rx=(minRx+Math.sin(p*Math.PI)*(maxRx-minRx))*wob;
+        const x=cx+Math.cos(ang)*rx;
+        i===0?cg.moveTo(x,y):cg.lineTo(x,y);
+      }
+      cg.stroke();
+    }
+    if(!reduce){ct+=1;requestAnimationFrame(drawCollab);}
+  }
+  if(reduce){ct=200;drawCollab();}else{drawCollab();}
+}
+
+const galleryRedraws=[];
+document.querySelectorAll('#gallery .gitem').forEach(item=>{
+  const ph=item.querySelector('.ph');
+  const c=document.createElement('canvas');ph.appendChild(c);
+  const g=c.getContext('2d');const seed=parseInt(item.dataset.seed);
+  function gsize(){const d=Math.min(window.devicePixelRatio||1,2);const r=ph.getBoundingClientRect();if(r.width===0)return;c.width=r.width*d;c.height=r.height*d;g.setTransform(d,0,0,d,0,0);draw(r.width,r.height);}
+  function draw(w,h){
+    const P=pal();
+    g.clearRect(0,0,w,h);
+    g.fillStyle=P.plate;g.fillRect(0,0,w,h);
+    const ang=(0.5+seed*0.13);const gap=6+seed%3*2;
+    g.save();g.translate(w/2,h/2);g.rotate(ang);
+    const span=Math.max(w,h)*1.5;
+    for(let y=-span;y<span;y+=gap){
+      const v=P.galleryLine+((Math.sin(y*0.05+seed)+1)/2)*P.galleryLineAmp;
+      g.strokeStyle='rgba('+P.ink+','+v.toFixed(3)+')';g.lineWidth=1;
+      g.beginPath();g.moveTo(-span,y);g.lineTo(span,y);g.stroke();
+    }
+    g.restore();
+    const lx=seed%2?w*0.7:w*0.3, ly=seed%2?h*0.35:h*0.6;
+    const rg=g.createRadialGradient(lx,ly,0,lx,ly,Math.max(w,h)*0.6);
+    rg.addColorStop(0,P.light+P.galleryGlow+')');rg.addColorStop(1,P.light+'0)');
+    g.fillStyle=rg;g.fillRect(0,0,w,h);
+    const vg=g.createRadialGradient(w/2,h/2,Math.min(w,h)*0.2,w/2,h/2,Math.max(w,h)*0.75);
+    vg.addColorStop(0,P.vig+'0)');vg.addColorStop(1,P.vig+P.galleryVig+')');
+    g.fillStyle=vg;g.fillRect(0,0,w,h);
+  }
+  galleryRedraws.push(gsize);
+  new ResizeObserver(gsize).observe(ph);gsize();
+});
+
+/* redraw static gallery canvases when theme flips */
+themeBtn.addEventListener('click',()=>{requestAnimationFrame(()=>galleryRedraws.forEach(fn=>fn()));});
+
+setLang('pl');
+</script>
+</body>
+</html>
