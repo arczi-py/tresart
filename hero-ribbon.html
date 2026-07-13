@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRES ART — Ribbon Sculpture (hero test)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#E9DFCC; --bone-2:#E2D6C0;
+    --ink:#231A10; --ink-soft:#5C4E3B; --muted:#8B7B63;
+    --terra:#B4592F;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',sans-serif; --mono:'Space Mono',monospace;
+    --page:clamp(24px,5vw,124px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:0.05;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  /* ---------- HERO LAYOUT ---------- */
+  .rh-hero{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center;padding:120px var(--page) 96px;}
+  /* warm gradient wash so the sculpture sits in light, not in a void */
+  .rh-hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(90% 80% at 78% 34%,rgba(180,89,47,0.10),transparent 58%),radial-gradient(70% 90% at 100% 100%,rgba(154,122,72,0.12),transparent 60%);}
+  .rh-visual{position:absolute;inset:0;z-index:1;}
+  .rh-visual canvas{display:block;width:100%;height:100%;}
+  /* keep the left column (type) clean over the 3D */
+  .rh-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--bone) 4%,rgba(233,223,204,0.72) 26%,transparent 52%),linear-gradient(180deg,transparent 60%,var(--bone) 98%);}
+
+  .rh-copy{position:relative;z-index:2;width:100%;}
+  .rh-eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--terra);margin-bottom:28px;}
+  .rh-eyebrow::before{content:"";width:34px;height:1px;background:var(--terra);}
+  .rh-title{font-family:var(--serif);font-weight:360;font-size:clamp(54px,9vw,152px);line-height:0.9;letter-spacing:-0.02em;max-width:15ch;}
+  .rh-title .l2{display:block;font-style:italic;font-weight:340;color:var(--terra);margin-left:1.1em;}
+  .rh-title .l3{display:block;margin-left:0.35em;}
+  .rh-lead{margin-top:34px;max-width:46ch;font-size:clamp(15px,1.2vw,19px);line-height:1.75;color:var(--ink-soft);}
+  .rh-actions{margin-top:42px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  .rh-btn{font-family:var(--mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;background:var(--terra);color:#fff;text-decoration:none;padding:16px 30px;border-radius:2px;border:1px solid var(--terra);transition:background .3s,transform .3s;}
+  .rh-btn:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-2px);}
+  .rh-link{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;position:relative;padding-bottom:4px;}
+  .rh-link::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--ink);transform:scaleX(0.35);transform-origin:left;transition:transform .35s;}
+  .rh-link:hover::after{transform:scaleX(1);}
+  .rh-scroll{position:absolute;left:var(--page);bottom:34px;z-index:2;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--muted);}
+  .rh-scroll::after{content:"";width:52px;height:1px;background:linear-gradient(90deg,var(--terra),transparent);}
+  .rh-vlabel{position:absolute;right:calc(var(--page) - 4px);top:50%;z-index:2;transform:rotate(90deg);transform-origin:right center;font-family:var(--mono);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+
+  @media(max-width:820px){
+    .rh-hero::after{background:linear-gradient(180deg,rgba(233,223,204,0.30),rgba(233,223,204,0.86) 74%,var(--bone));}
+    .rh-visual{opacity:0.62;}
+    .rh-title{font-size:clamp(46px,13vw,86px);}
+    .rh-title .l2{margin-left:0.5em;}
+    .rh-vlabel{display:none;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<header class="rh-hero" id="hero">
+  <!-- 3D component mounts here -->
+  <div class="rh-visual" id="ribbon" aria-hidden="true"></div>
+
+  <span class="rh-vlabel">Atelier · Materia</span>
+  <div class="rh-copy">
+    <span class="rh-eyebrow">Digital Foundry — Warszawa</span>
+    <h1 class="rh-title">Twój render<span class="l2">schodzi</span><span class="l3">z ekranu.</span></h1>
+    <p class="rh-lead">Wielkoformatowy druk 3D dla grafików, projektantów i artystów 3D. Z pliku cyfrowego rodzi się fizyczna, dopracowana forma — warstwa po warstwie.</p>
+    <div class="rh-actions">
+      <a href="#" class="rh-btn">Wyceń projekt</a>
+      <a href="#" class="rh-link">Zobacz realizacje</a>
+    </div>
+  </div>
+  <div class="rh-scroll"><span>Przewiń</span></div>
+</header>
+
+<!-- extra space so scroll parallax is testable -->
+<section style="height:120vh;padding:120px var(--page);">
+  <p style="font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);">Sekcja testowa — przewiń, żeby zobaczyć parallax rzeźby.</p>
+</section>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+/* ============================================================
+   RIBBON HERO — twisted ribbon that transitions across its length
+   wireframe (terracotta) -> translucent building layers -> solid ivory
+   Drop-in: initRibbonHero(containerEl)
+   ============================================================ */
+
+/* --- parametric twisted-ribbon geometry (flattened tube + torsion) --- */
+function buildRibbon(NL, NR){
+  const pos=[], uc=[], idx=[];
+  const up=new THREE.Vector3(0,1,0);
+  const P=new THREE.Vector3(), Pn=new THREE.Vector3(), T=new THREE.Vector3(),
+        Nrm=new THREE.Vector3(), B=new THREE.Vector3(), W=new THREE.Vector3(),
+        Th=new THREE.Vector3(), tmp=new THREE.Vector3();
+  const rx=0.54, ry=0.075;
+  function path(u,out){
+    out.set((u-0.5)*3.15,
+            Math.sin(u*Math.PI*1.05 - 0.35)*0.44 - 0.04,
+            Math.sin(u*Math.PI*0.85)*0.55);
+  }
+  for(let i=0;i<NL;i++){
+    const u=i/(NL-1);
+    path(u,P); path(Math.min(1,u+0.001),Pn);
+    T.subVectors(Pn,P).normalize();
+    Nrm.copy(up).addScaledVector(T,-up.dot(T));
+    if(Nrm.lengthSq()<1e-6) Nrm.set(1,0,0);
+    Nrm.normalize();
+    B.crossVectors(T,Nrm).normalize();
+    const tw=u*Math.PI*2.05 + 0.35;          // torsion (~1 turn)
+    const ct=Math.cos(tw), st=Math.sin(tw);
+    W.copy(Nrm).multiplyScalar(ct).addScaledVector(B, st);   // width axis
+    Th.copy(Nrm).multiplyScalar(-st).addScaledVector(B, ct); // thickness axis
+    const taper=Math.pow(Math.sin(Math.PI*u),0.5);           // elegant end taper
+    const rxe=rx*(0.40+0.60*taper), rye=ry*(0.55+0.45*taper);
+    for(let j=0;j<NR;j++){
+      const th=j/NR*Math.PI*2;
+      tmp.copy(P).addScaledVector(W, rxe*Math.cos(th)).addScaledVector(Th, rye*Math.sin(th));
+      pos.push(tmp.x,tmp.y,tmp.z); uc.push(u);
+    }
+  }
+  for(let i=0;i<NL-1;i++) for(let j=0;j<NR;j++){
+    const a=i*NR+j, b=i*NR+(j+1)%NR, c=(i+1)*NR+j, d=(i+1)*NR+(j+1)%NR;
+    idx.push(a,c,b, b,c,d);
+  }
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos,3));
+  g.setAttribute('uCoord', new THREE.Float32BufferAttribute(uc,1));
+  g.setIndex(idx); g.computeVertexNormals();
+  return g;
+}
+
+const SOLID_V=`
+  attribute float uCoord;
+  varying float vU; varying vec3 vN; varying vec3 vWorld;
+  void main(){
+    vU=uCoord;
+    vec4 wp=modelMatrix*vec4(position,1.0);
+    vWorld=wp.xyz;
+    vN=normalize(normalMatrix*normal);
+    gl_Position=projectionMatrix*viewMatrix*wp;
+  }`;
+const SOLID_F=`
+  precision highp float;
+  varying float vU; varying vec3 vN; varying vec3 vWorld;
+  uniform vec3 uIvory; uniform vec3 uShadow; uniform vec3 uTerra;
+  void main(){
+    vec3 N=normalize(vN);
+    if(!gl_FrontFacing) N=-N;
+    vec3 Vd=normalize(cameraPosition - vWorld);
+    vec3 L=normalize(vec3(0.55,0.85,0.65));
+    float diff=clamp(dot(N,L),0.0,1.0);
+    float amb=0.46 + 0.26*N.y;
+    vec3 base=mix(uShadow, uIvory, clamp(diff*0.85+amb*0.45,0.0,1.0));
+    float fres=pow(1.0-clamp(dot(N,Vd),0.0,1.0),3.0);
+    base += fres*0.14;                                   // premium sheen
+    // horizontal 3D-print layer lines (world Y), subtle on the right, stronger mid
+    float bands=smoothstep(0.55,0.98,0.5+0.5*sin(vWorld.y*66.0));
+    float buildZone=smoothstep(0.30,0.52,vU)*(1.0-smoothstep(0.66,0.9,vU));
+    base=mix(base, base*0.80 + uTerra*0.03, bands*(0.10+0.55*buildZone));
+    // materialization: transparent left -> solid right, translucent while "building"
+    float solid=smoothstep(0.44,0.74,vU);
+    float alpha=max(solid, buildZone*0.55);
+    if(alpha<0.02) discard;
+    gl_FragColor=vec4(base, alpha);
+  }`;
+
+const WIRE_V=`
+  attribute float uCoord; varying float vU;
+  void main(){ vU=uCoord; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`;
+const WIRE_F=`
+  precision highp float;
+  varying float vU; uniform vec3 uTerra; uniform float uTime;
+  void main(){
+    float a=1.0 - smoothstep(0.12,0.48,vU);              // strong left, gone by middle
+    float pulse=0.6 + 0.4*sin(uTime*1.4 - vU*10.0);      // gentle "building" shimmer
+    a*=0.55 + 0.45*pulse;
+    if(a<0.02) discard;
+    gl_FragColor=vec4(uTerra, a*0.85);
+  }`;
+
+export function initRibbonHero(container){
+  if(!container) return;
+  let renderer;
+  try{ renderer=new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'high-performance'}); }
+  catch(e){ return; }                                    // no WebGL -> leave warm bg
+  renderer.setClearColor(0x000000,0);
+  renderer.outputColorSpace=THREE.LinearSRGBColorSpace;  // author colors directly
+  container.appendChild(renderer.domElement);
+
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(30,1,0.1,100);
+  camera.position.set(0,0,7);
+
+  const group=new THREE.Group();
+  group.rotation.set(-0.08,-0.34,0.06);
+  scene.add(group);
+
+  const uniforms={
+    uTime:{value:0},
+    uIvory:{value:new THREE.Color('#ECE3CF')},
+    uShadow:{value:new THREE.Color('#B49F80')},
+    uTerra:{value:new THREE.Color('#B4592F')}
+  };
+  const solidMat=new THREE.ShaderMaterial({uniforms, vertexShader:SOLID_V, fragmentShader:SOLID_F,
+    transparent:true, side:THREE.DoubleSide, depthWrite:true});
+  const wireMat=new THREE.ShaderMaterial({uniforms, vertexShader:WIRE_V, fragmentShader:WIRE_F,
+    transparent:true, wireframe:true, depthWrite:false});
+
+  const solid=new THREE.Mesh(buildRibbon(260,22), solidMat); solid.renderOrder=1;
+  const wire =new THREE.Mesh(buildRibbon(74,9),  wireMat);  wire.renderOrder=0;
+  group.add(wire, solid);
+
+  function resize(){
+    const w=container.clientWidth||1, h=container.clientHeight||1;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+    renderer.setSize(w,h,false);
+    camera.aspect=w/h; camera.updateProjectionMatrix();
+    const small=w<820;
+    group.position.x = small?0.15:1.28;                  // sit on the right
+    group.scale.setScalar(small?0.80:1.0);
+  }
+  resize(); window.addEventListener('resize',resize);
+
+  // parallax (pointer) + scroll drift
+  let tx=0,ty=0,px=0,py=0;
+  window.addEventListener('pointermove',e=>{ tx=e.clientX/window.innerWidth-0.5; ty=e.clientY/window.innerHeight-0.5; },{passive:true});
+
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let running=true;
+  new IntersectionObserver(es=>{running=es[0].isIntersecting;},{threshold:0}).observe(container);
+
+  const t0=performance.now();
+  function frame(now){
+    requestAnimationFrame(frame);
+    if(!running) return;
+    const t=(now-t0)/1000;
+    uniforms.uTime.value=t;
+    px+=(tx-px)*0.045; py+=(ty-py)*0.045;
+    const scrollK=(window.scrollY||0)/(window.innerHeight||1);
+    if(!reduce){
+      group.rotation.y=-0.34 + Math.sin(t*0.28)*0.12 + px*0.28;   // micro-rotation + parallax
+      group.rotation.x=-0.08 + Math.sin(t*0.22)*0.045 - py*0.12;
+      group.position.y=Math.sin(t*0.55)*0.06 - scrollK*0.45;      // float + scroll drift
+    }
+    renderer.render(scene,camera);
+  }
+  if(reduce){ resize(); renderer.render(scene,camera); }
+  else requestAnimationFrame(frame);
+}
+
+initRibbonHero(document.getElementById('ribbon'));
+</script>
+</body>
+</html>
