@@ -1,0 +1,56 @@
+import {defineField, defineType} from 'sanity'
+
+export const subpageContent = defineType({
+  name: 'subpageContent',
+  title: 'Podstrona',
+  type: 'document',
+  groups: [
+    {name: 'seo', title: 'SEO'},
+    {name: 'hero', title: 'Hero'},
+    {name: 'sections', title: 'Sekcje'},
+    {name: 'cta', title: 'Końcowe CTA'},
+  ],
+  fields: [
+    defineField({name: 'slug', type: 'string', hidden: true, readOnly: true}),
+    defineField({name: 'language', type: 'string', hidden: true, readOnly: true}),
+    defineField({name: 'seoTitle', title: 'Tytuł SEO', type: 'string', group: 'seo'}),
+    defineField({name: 'description', title: 'Opis SEO', type: 'text', rows: 3, group: 'seo'}),
+    defineField({name: 'heroEyebrow', title: 'Eyebrow', type: 'string', group: 'hero'}),
+    defineField({name: 'heroHeading', title: 'Nagłówek hero', type: 'string', group: 'hero'}),
+    defineField({name: 'heroIntro', title: 'Opis hero', type: 'text', rows: 4, group: 'hero'}),
+    defineField({name: 'heroImage', title: 'Zdjęcie hero', type: 'image', options: {hotspot: true}, group: 'hero'}),
+    defineField({
+      name: 'heroImageUrl',
+      title: 'Awaryjny URL zdjęcia hero',
+      type: 'url',
+      description: 'Pozostaw jako wartość przejściową. Docelowo prześlij zdjęcie powyżej do Sanity.',
+      group: 'hero',
+    }),
+    defineField({name: 'heroImageAlt', title: 'Opis alternatywny zdjęcia hero', type: 'string', group: 'hero'}),
+    defineField({name: 'visualPrimary', title: 'Lewy podpis na zdjęciu', type: 'string', group: 'hero'}),
+    defineField({name: 'visualSecondary', title: 'Prawy podpis na zdjęciu', type: 'string', group: 'hero'}),
+    defineField({
+      name: 'actions',
+      title: 'Przyciski hero',
+      type: 'array',
+      of: [{type: 'subpageAction'}],
+      group: 'hero',
+      description: 'Edytuj treść i adres istniejących przycisków. Ich liczba jest stała, aby zachować zaprojektowany układ.',
+      options: {sortable: false, disableActions: ['add', 'addBefore', 'addAfter', 'remove', 'duplicate', 'copy']},
+    }),
+    defineField({
+      name: 'sections',
+      title: 'Sekcje',
+      type: 'array',
+      of: [{type: 'subpageSection'}],
+      group: 'sections',
+      description: 'Edytuj treść każdej sekcji. Ich kolejność i typ są stałe, aby nie rozbić widoku strony.',
+      options: {sortable: false, disableActions: ['add', 'addBefore', 'addAfter', 'remove', 'duplicate', 'copy']},
+    }),
+    defineField({name: 'ctaHeading', title: 'Nagłówek końcowego CTA', type: 'string', group: 'cta'}),
+    defineField({name: 'ctaBody', title: 'Opis końcowego CTA', type: 'text', rows: 4, group: 'cta'}),
+  ],
+  preview: {
+    select: {title: 'heroHeading', subtitle: 'slug', media: 'heroImage'},
+  },
+})

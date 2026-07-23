@@ -1,8 +1,0 @@
-.swatch-row{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--line);margin-top:34px;}
-.swatch{height:58px;}
-.s-ink{background:#211c18;}
-.s-earth{background:#3E3528;}
-.s-copper{background:#805D35;}
-.s-clay{background:#A88A64;}
-.s-stone{background:#6F6657;}
-.s-sand{background:#D8CFC0;}

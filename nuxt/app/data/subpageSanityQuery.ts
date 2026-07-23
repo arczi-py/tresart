@@ -1,0 +1,30 @@
+export const subpageSanityQuery = `*[_id == $id][0]{
+  seoTitle,
+  description,
+  heroEyebrow,
+  heroHeading,
+  heroIntro,
+  heroImage{asset->{url}},
+  heroImageUrl,
+  heroImageAlt,
+  visualPrimary,
+  visualSecondary,
+  actions[]{slot, label, to, variant},
+  sections[]{
+    slot,
+    type,
+    columns,
+    alt,
+    eyebrow,
+    heading,
+    body,
+    tiles[]{slot, number, label, metric, title, body},
+    works[]{slot, size, image{asset->{url}}, imageUrl, alt, category, title, body},
+    stages[]{slot, number, title, body},
+    groups[]{slot, label, items[]{slot, number, text}},
+    checklistEyebrow,
+    checklist[]{slot, number, text}
+  },
+  ctaHeading,
+  ctaBody
+}`
