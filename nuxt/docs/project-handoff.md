@@ -91,6 +91,8 @@ Published-content preview:
 
 This bypasses Sanity CDN and refreshes published content every 10 seconds. Draft preview for unpublished content is not implemented yet; it should use a protected server route and a server-side Sanity token.
 
+Preview URLs are marked `noindex,nofollow` and must not be shared as public production links.
+
 ## SEO checklist before launch
 
 - Confirm final production domain in `app.config.ts`.

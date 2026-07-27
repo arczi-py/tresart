@@ -28,7 +28,7 @@
           </div>
         </div>
         <figure class="subpage-visual">
-          <img :src="page.image" :alt="page.imageAlt" decoding="async">
+          <img :src="page.image" :alt="page.imageAlt" fetchpriority="high" decoding="async">
           <figcaption class="subpage-visual-label">
             <span>{{ page.visualPrimary }}</span>
             <span>{{ page.visualSecondary }}</span>
@@ -169,6 +169,7 @@ const route = useRoute()
 const landingPage = useLandingPage()
 const slug = String(route.params.slug ?? '')
 const page = await initializeSubpage(slug)
+const isPreview = route.query.preview === 'sanity'
 
 if (!page) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found' })
@@ -220,7 +221,7 @@ const breadcrumbJsonLd = {
 useSeoMeta({
   title: page.seoTitle,
   description: page.description,
-  robots: 'index,follow',
+  robots: isPreview ? 'noindex,nofollow' : 'index,follow',
   ogTitle: page.seoTitle,
   ogDescription: page.description,
   ogSiteName: landingPage.settings.brand.name,

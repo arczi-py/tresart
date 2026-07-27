@@ -177,99 +177,33 @@ function setupCollabCanvas(reduceMotion: boolean, cleanup: Array<() => void>) {
     }
   }
 
-  resize()
+  let started = false
+  const start = () => {
+    if (started) return
+    started = true
+    resize()
+
+    if (reduceMotion) {
+      time = 200
+      draw()
+    } else {
+      raf = requestAnimationFrame(draw)
+    }
+  }
+
+  const visibilityObserver = new IntersectionObserver((entries) => {
+    if (!entries[0]?.isIntersecting) return
+    start()
+    visibilityObserver.disconnect()
+  }, { rootMargin: '200px 0px' })
+
+  visibilityObserver.observe(canvas)
   window.addEventListener('resize', resize, { passive: true })
   cleanup.push(() => {
+    visibilityObserver.disconnect()
     window.removeEventListener('resize', resize)
     cancelAnimationFrame(raf)
   })
-
-  if (reduceMotion) {
-    time = 200
-    draw()
-  } else {
-    raf = requestAnimationFrame(draw)
-  }
-}
-
-function setupGalleryCanvases(cleanup: Array<() => void>) {
-  const redraws: Array<() => void> = []
-
-  document.querySelectorAll<HTMLElement>('#gallery .gitem').forEach((item) => {
-    const placeholder = item.querySelector<HTMLElement>('.ph')
-    if (!placeholder) return
-
-    const canvas = document.createElement('canvas')
-    const context = canvas.getContext('2d')
-    const seed = Number.parseInt(item.dataset.seed ?? '1', 10)
-    const resizeObserver = new ResizeObserver(() => resize())
-
-    if (!context) return
-
-    const draw = (width: number, height: number) => {
-      const palette = getCanvasPalette()
-      context.clearRect(0, 0, width, height)
-      context.fillStyle = palette.plate
-      context.fillRect(0, 0, width, height)
-
-      const angle = 0.5 + seed * 0.13
-      const gap = 6 + (seed % 3) * 2
-      const span = Math.max(width, height) * 1.5
-
-      context.save()
-      context.translate(width / 2, height / 2)
-      context.rotate(angle)
-
-      for (let y = -span; y < span; y += gap) {
-        const alpha = palette.galleryLine + ((Math.sin(y * 0.05 + seed) + 1) / 2) * palette.galleryLineAmp
-        context.strokeStyle = `rgba(${palette.ink},${alpha.toFixed(3)})`
-        context.lineWidth = 1
-        context.beginPath()
-        context.moveTo(-span, y)
-        context.lineTo(span, y)
-        context.stroke()
-      }
-
-      context.restore()
-
-      const lightX = seed % 2 ? width * 0.7 : width * 0.3
-      const lightY = seed % 2 ? height * 0.35 : height * 0.6
-      const radialGradient = context.createRadialGradient(lightX, lightY, 0, lightX, lightY, Math.max(width, height) * 0.6)
-      radialGradient.addColorStop(0, `${palette.light}${palette.galleryGlow})`)
-      radialGradient.addColorStop(1, `${palette.light}0)`)
-      context.fillStyle = radialGradient
-      context.fillRect(0, 0, width, height)
-
-      const vignette = context.createRadialGradient(width / 2, height / 2, Math.min(width, height) * 0.2, width / 2, height / 2, Math.max(width, height) * 0.75)
-      vignette.addColorStop(0, `${palette.vig}0)`)
-      vignette.addColorStop(1, `${palette.vig}${palette.galleryVig})`)
-      context.fillStyle = vignette
-      context.fillRect(0, 0, width, height)
-    }
-
-    const resize = () => {
-      const density = Math.min(window.devicePixelRatio || 1, 2)
-      const rect = placeholder.getBoundingClientRect()
-      if (rect.width === 0) return
-
-      canvas.width = rect.width * density
-      canvas.height = rect.height * density
-      context.setTransform(density, 0, 0, density, 0, 0)
-      draw(rect.width, rect.height)
-    }
-
-    placeholder.appendChild(canvas)
-    resizeObserver.observe(placeholder)
-    redraws.push(resize)
-    resize()
-
-    cleanup.push(() => {
-      resizeObserver.disconnect()
-      canvas.remove()
-    })
-  })
-
-  return redraws
 }
 
 export function useLandingCanvasEffects() {
@@ -280,14 +214,6 @@ export function useLandingCanvasEffects() {
     setupRevealObserver(cleanup)
     setupLayerLines(cleanup)
     setupCollabCanvas(reduceMotion, cleanup)
-
-    const redrawGallery = setupGalleryCanvases(cleanup)
-    const onThemeChange = () => {
-      requestAnimationFrame(() => redrawGallery.forEach((redraw) => redraw()))
-    }
-
-    window.addEventListener('landing:themechange', onThemeChange)
-    cleanup.push(() => window.removeEventListener('landing:themechange', onThemeChange))
   })
 
   onBeforeUnmount(() => {

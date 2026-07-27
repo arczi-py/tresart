@@ -3,11 +3,11 @@
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
-          <NuxtLink to="/" class="logo brand-logo" :aria-label="landingPage.settings.brand.name"><img :src="landingPage.settings.brand.logo" :alt="landingPage.settings.brand.name" class="brand-logo-img" loading="lazy" decoding="async"></NuxtLink>
+          <NuxtLink to="/" class="logo brand-logo" :aria-label="landingPage.settings.brand.name"><img :src="logoUrl" :alt="landingPage.settings.brand.name" class="brand-logo-img" width="128" height="96" loading="lazy" decoding="async"></NuxtLink>
           <p data-i="foot_p">Digital Foundry materializująca prace artystów, projektantów i architektów w meblach i obiektach.</p>
         </div>
         <div class="foot-col">
-          <h5>Studio</h5>
+          <p class="foot-heading">Studio</p>
           <NuxtLink
             v-for="item in subpageNavItems"
             :key="item.to"
@@ -17,13 +17,13 @@
           </NuxtLink>
         </div>
         <div class="foot-col">
-          <h5 data-i="foot_c2">Kontakt</h5>
+          <p class="foot-heading" data-i="foot_c2">Kontakt</p>
           <a :href="landingPage.settings.contact.phoneHref">{{ landingPage.settings.contact.phone }}</a>
           <a :href="landingPage.settings.contact.emailHref">{{ landingPage.settings.contact.email }}</a>
           <NuxtLink to="/kontakt">Studio</NuxtLink>
         </div>
         <div class="foot-col">
-          <h5 data-i="foot_c3">Social</h5>
+          <p class="foot-heading" data-i="foot_c3">Social</p>
           <div class="footer-social-grid">
             <a :href="socialLinks.instagram.href" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.4"/><path d="M16.8 7.2h.01"/></svg></a>
             <a :href="socialLinks.facebook.href" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 8H14a2.4 2.4 0 0 0-2.4 2.4V13H8.8v3.6h2.8V21h3.7v-4.4h2.8L18.7 13h-3.4v-1.8c0-.6.4-1 1-1h2.2V8h-3z"/></svg></a>
@@ -44,6 +44,7 @@
 import { subpageNavItems } from '~/data/subpages'
 
 const landingPage = useLandingPage()
+const logoUrl = computed(() => optimizeSanityImage(landingPage.settings.brand.logo, 256))
 const socialLinks = {
   instagram: landingPage.settings.socialLinks.find((link) => link.label === 'Instagram')!,
   facebook: landingPage.settings.socialLinks.find((link) => link.label === 'Facebook')!,

@@ -4,9 +4,10 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import * as THREE from 'three'
+import type * as Three from 'three'
 
 const containerRef = ref<HTMLElement | null>(null)
+let THREE: typeof import('three')
 
 function buildRibbon(NL: number, NR: number) {
   const pos: number[] = []
@@ -24,7 +25,7 @@ function buildRibbon(NL: number, NR: number) {
   const rx = 0.54
   const ry = 0.075
 
-  function path(u: number, out: THREE.Vector3) {
+  function path(u: number, out: Three.Vector3) {
     out.set(
       (u - 0.5) * 3.15,
       Math.sin(u * Math.PI * 1.05 - 0.35) * 0.44 - 0.04,
@@ -125,137 +126,146 @@ const WIRE_F = `
   }`
 
 let cleanup: (() => void) | null = null
+let disposed = false
 
 onMounted(() => {
   const container = containerRef.value
   if (!container) return
 
-  let renderer: THREE.WebGLRenderer
-  try {
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' })
-  } catch {
-    return
-  }
+  const start = async () => {
+    THREE = await import('three')
+    if (disposed) return
 
-  renderer.setClearColor(0x000000, 0)
-  renderer.outputColorSpace = THREE.LinearSRGBColorSpace
-  container.appendChild(renderer.domElement)
-
-  const scene = new THREE.Scene()
-  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100)
-  camera.position.set(0, 0, 7)
-
-  const baseRot = { x: -0.14, y: -0.38, z: 0.20 }
-  const group = new THREE.Group()
-  group.rotation.set(baseRot.x, baseRot.y, baseRot.z)
-  scene.add(group)
-
-  const uniforms = {
-    uTime: { value: 0 },
-    uIvory: { value: new THREE.Color('#ECE3CF') },
-    uShadow: { value: new THREE.Color('#B49F80') },
-    uTerra: { value: new THREE.Color('#E1A137') },
-  }
-  const solidGeometry = buildRibbon(260, 22)
-  const wireGeometry = buildRibbon(74, 9)
-  const solidMat = new THREE.ShaderMaterial({
-    uniforms,
-    vertexShader: SOLID_V,
-    fragmentShader: SOLID_F,
-    transparent: true,
-    side: THREE.DoubleSide,
-    depthWrite: true,
-  })
-  const wireMat = new THREE.ShaderMaterial({
-    uniforms,
-    vertexShader: WIRE_V,
-    fragmentShader: WIRE_F,
-    transparent: true,
-    wireframe: true,
-    depthWrite: false,
-  })
-
-  const solid = new THREE.Mesh(solidGeometry, solidMat)
-  solid.renderOrder = 1
-  const wire = new THREE.Mesh(wireGeometry, wireMat)
-  wire.renderOrder = 0
-  group.add(wire, solid)
-
-  let baseY = 0
-  const resize = () => {
-    const w = container.clientWidth || 1
-    const h = container.clientHeight || 1
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
-    renderer.setSize(w, h, false)
-    camera.aspect = w / h
-    camera.updateProjectionMatrix()
-    const small = w < 820
-    baseY = small ? -0.24 : -0.46
-    group.position.x = small ? 0.04 : 1.06
-    group.position.y = baseY
-    group.scale.setScalar(small ? 0.88 : 1.20)
-  }
-
-  let tx = 0
-  let ty = 0
-  let px = 0
-  let py = 0
-  const pointerMove = (event: PointerEvent) => {
-    tx = event.clientX / window.innerWidth - 0.5
-    ty = event.clientY / window.innerHeight - 0.5
-  }
-
-  const reduceRibbon = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  let running = true
-  const observer = new IntersectionObserver((entries) => {
-    running = Boolean(entries[0]?.isIntersecting)
-  }, { threshold: 0 })
-
-  let raf = 0
-  const t0 = performance.now()
-  const frame = (now: number) => {
-    raf = requestAnimationFrame(frame)
-    if (!running) return
-    const t = (now - t0) / 1000
-    uniforms.uTime.value = t
-    px += (tx - px) * 0.045
-    py += (ty - py) * 0.045
-    const scrollK = (window.scrollY || 0) / (window.innerHeight || 1)
-    if (!reduceRibbon) {
-      group.rotation.y = baseRot.y + Math.sin(t * 0.28) * 0.12 + px * 0.28
-      group.rotation.x = baseRot.x + Math.sin(t * 0.22) * 0.045 - py * 0.12
-      group.rotation.z = baseRot.z + px * 0.04
-      group.position.y = baseY + Math.sin(t * 0.55) * 0.06 - scrollK * 0.45
+    let renderer: Three.WebGLRenderer
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' })
+    } catch {
+      return
     }
-    renderer.render(scene, camera)
+
+    renderer.setClearColor(0x000000, 0)
+    renderer.outputColorSpace = THREE.LinearSRGBColorSpace
+    container.appendChild(renderer.domElement)
+
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100)
+    camera.position.set(0, 0, 7)
+
+    const baseRot = { x: -0.14, y: -0.38, z: 0.20 }
+    const group = new THREE.Group()
+    group.rotation.set(baseRot.x, baseRot.y, baseRot.z)
+    scene.add(group)
+
+    const uniforms = {
+      uTime: { value: 0 },
+      uIvory: { value: new THREE.Color('#ECE3CF') },
+      uShadow: { value: new THREE.Color('#B49F80') },
+      uTerra: { value: new THREE.Color('#E1A137') },
+    }
+    const solidGeometry = buildRibbon(260, 22)
+    const wireGeometry = buildRibbon(74, 9)
+    const solidMat = new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader: SOLID_V,
+      fragmentShader: SOLID_F,
+      transparent: true,
+      side: THREE.DoubleSide,
+      depthWrite: true,
+    })
+    const wireMat = new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader: WIRE_V,
+      fragmentShader: WIRE_F,
+      transparent: true,
+      wireframe: true,
+      depthWrite: false,
+    })
+
+    const solid = new THREE.Mesh(solidGeometry, solidMat)
+    solid.renderOrder = 1
+    const wire = new THREE.Mesh(wireGeometry, wireMat)
+    wire.renderOrder = 0
+    group.add(wire, solid)
+
+    let baseY = 0
+    const resize = () => {
+      const w = container.clientWidth || 1
+      const h = container.clientHeight || 1
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
+      renderer.setSize(w, h, false)
+      camera.aspect = w / h
+      camera.updateProjectionMatrix()
+      const small = w < 820
+      baseY = small ? -0.24 : -0.46
+      group.position.x = small ? 0.04 : 1.06
+      group.position.y = baseY
+      group.scale.setScalar(small ? 0.88 : 1.20)
+    }
+
+    let tx = 0
+    let ty = 0
+    let px = 0
+    let py = 0
+    const pointerMove = (event: PointerEvent) => {
+      tx = event.clientX / window.innerWidth - 0.5
+      ty = event.clientY / window.innerHeight - 0.5
+    }
+
+    const reduceRibbon = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let running = true
+    const observer = new IntersectionObserver((entries) => {
+      running = Boolean(entries[0]?.isIntersecting)
+    }, { threshold: 0 })
+
+    let raf = 0
+    const t0 = performance.now()
+    const frame = (now: number) => {
+      raf = requestAnimationFrame(frame)
+      if (!running) return
+      const t = (now - t0) / 1000
+      uniforms.uTime.value = t
+      px += (tx - px) * 0.045
+      py += (ty - py) * 0.045
+      const scrollK = (window.scrollY || 0) / (window.innerHeight || 1)
+      if (!reduceRibbon) {
+        group.rotation.y = baseRot.y + Math.sin(t * 0.28) * 0.12 + px * 0.28
+        group.rotation.x = baseRot.x + Math.sin(t * 0.22) * 0.045 - py * 0.12
+        group.rotation.z = baseRot.z + px * 0.04
+        group.position.y = baseY + Math.sin(t * 0.55) * 0.06 - scrollK * 0.45
+      }
+      renderer.render(scene, camera)
+    }
+
+    resize()
+    window.addEventListener('resize', resize)
+    window.addEventListener('pointermove', pointerMove, { passive: true })
+    observer.observe(container)
+
+    if (reduceRibbon) {
+      renderer.render(scene, camera)
+    } else {
+      raf = requestAnimationFrame(frame)
+    }
+
+    cleanup = () => {
+      cancelAnimationFrame(raf)
+      observer.disconnect()
+      window.removeEventListener('resize', resize)
+      window.removeEventListener('pointermove', pointerMove)
+      solidGeometry.dispose()
+      wireGeometry.dispose()
+      solidMat.dispose()
+      wireMat.dispose()
+      renderer.dispose()
+      renderer.domElement.remove()
+    }
   }
 
-  resize()
-  window.addEventListener('resize', resize)
-  window.addEventListener('pointermove', pointerMove, { passive: true })
-  observer.observe(container)
-
-  if (reduceRibbon) {
-    renderer.render(scene, camera)
-  } else {
-    raf = requestAnimationFrame(frame)
-  }
-
-  cleanup = () => {
-    cancelAnimationFrame(raf)
-    observer.disconnect()
-    window.removeEventListener('resize', resize)
-    window.removeEventListener('pointermove', pointerMove)
-    solidGeometry.dispose()
-    wireGeometry.dispose()
-    solidMat.dispose()
-    wireMat.dispose()
-    renderer.dispose()
-    renderer.domElement.remove()
-  }
+  void start()
 })
 
 onBeforeUnmount(() => {
+  disposed = true
   cleanup?.()
 })
 </script>

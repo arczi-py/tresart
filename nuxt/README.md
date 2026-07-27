@@ -67,10 +67,10 @@ Use `NUXT_PUBLIC_SANITY_USE_CDN=false` while editing and testing content. This r
 Preview flow for a client:
 
 1. The client edits and publishes a section in Sanity Studio.
-2. Open the Nuxt page with `?preview=sanity`, for example `http://localhost:3000/?preview=sanity`.
+2. Open the Nuxt page with `?preview=sanity`, for example `http://localhost:3000/?preview=sanity` or `http://localhost:3000/realizacje?preview=sanity`.
 3. In preview mode, Nuxt bypasses the CDN and refreshes published Sanity content every 10 seconds.
 
-This preview mode reads published content only. Draft preview for unpublished changes should be added later with a server-side Sanity token and a protected preview route.
+This preview mode reads published content only and is marked `noindex,nofollow`. Draft preview for unpublished changes should be added later with a server-side Sanity token and a protected preview route.
 
 Data flow:
 
