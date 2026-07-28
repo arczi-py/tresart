@@ -246,7 +246,6 @@ useHead({
   ],
   link: [
     { rel: 'canonical', href: canonicalUrl },
-    { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
     { rel: 'sitemap', type: 'application/xml', href: `${siteUrl}/sitemap.xml` },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
     { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },

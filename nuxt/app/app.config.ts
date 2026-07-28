@@ -10,7 +10,7 @@ export default defineAppConfig({
   seo: {
     title: 'TRES ART — wielkoformatowy druk 3D i obiekty z renderów',
     description: 'Wielkoformatowy druk 3D dla grafików, projektantów i artystów 3D. Z pliku, renderu lub modelu tworzymy fizyczne obiekty, meble i instalacje.',
-    image: '/images/logo-tresart-poziom.png',
+    image: '/images/og-tresart.png',
   },
   contact: {
     email: 'kontakt@tresart.pl',
