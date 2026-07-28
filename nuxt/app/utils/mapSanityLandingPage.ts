@@ -450,6 +450,15 @@ function mapManifestStatsFromSections(sections: UnknownRecord, fallback: Manifes
   }))
 }
 
+function mapMarqueeFromSections(sections: UnknownRecord, translations: LandingTranslations) {
+  languages.forEach((lang) => {
+    const document = sectionDocument(sections, 'manifest', lang)
+    const fallback = Array.isArray(translations[lang].marquee) ? translations[lang].marquee : []
+
+    translations[lang].marquee = readStringArray(document.marquee, fallback)
+  })
+}
+
 function mapManifestCardsFromSections(sections: UnknownRecord, fallback: ManifestCard[], translations: LandingTranslations) {
   applyArrayText(translations, sections, 'manifest', ['manifest', 'cards'], fallback, [
     { keyProp: 'labelKey', sourcePath: ['label'], fallbackProp: 'label' },
@@ -611,6 +620,7 @@ export function mapSanityLandingPage(payload: SanityLandingPayload | null, fallb
   if (hasLandingSections(payload)) {
     const translations = cloneTranslations(fallback.translations)
     mapSectionCopyFromSections(sections, translations)
+    mapMarqueeFromSections(sections, translations)
     const seo = asRecord(sectionDocument(sections, 'seo', 'pl').seo)
     const settings = mapSettings(fallback.settings, payload)
 

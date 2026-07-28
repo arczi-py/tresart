@@ -42,6 +42,7 @@ export const landingSanityQuery = `{
       introText,
       introBeforeBrand,
       introAfterBrand,
+      marquee,
       manifest{
         stats[]{ slot, label, value },
         cards[]{ slot, label, description }
