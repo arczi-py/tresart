@@ -22,12 +22,13 @@ export async function fetchSanitySubpage(
   const useCdn = options.useCdn ?? sanity.useCdn
   const apiHost = useCdn ? 'apicdn' : 'api'
   const endpoint = `https://${sanity.projectId}.${apiHost}.sanity.io/v${sanity.apiVersion}/data/query/${sanity.dataset}`
+  const documentId = JSON.stringify(`subpage-${slug}-pl`)
+  const query = subpageSanityQuery.replace('$id', documentId)
 
   try {
     const response = await $fetch<SanityQueryResponse<SanitySubpagePayload>>(endpoint, {
       query: {
-        query: subpageSanityQuery,
-        '$id': `subpage-${slug}-pl`,
+        query,
       },
       cache: options.cacheBust ? 'no-store' : 'default',
     })
