@@ -6,6 +6,18 @@ const singleton = (S: Parameters<StructureResolver>[0], title: string, schemaTyp
     .id(documentId)
     .child(S.document().schemaType(schemaType).documentId(documentId).title(title))
 
+const privacyPolicySingleton = (S: Parameters<StructureResolver>[0]) =>
+  S.listItem()
+    .title('Polityka prywatności')
+    .id('privacyPolicy')
+    .child(
+      S.document()
+        .schemaType('privacyPolicy')
+        .documentId('privacyPolicy')
+        .title('Polityka prywatności')
+        .initialValueTemplate('privacyPolicy'),
+    )
+
 const landingSections = [
   ['SEO', 'landingSeoSection', 'seo'],
   ['Hero', 'landingHeroSection', 'hero'],
@@ -69,6 +81,7 @@ export const deskStructure: StructureResolver = (S) =>
     .title('TRES ART')
     .items([
       singleton(S, 'Ustawienia strony', 'siteSettings', 'siteSettings'),
+      privacyPolicySingleton(S),
       S.divider(),
       languageGroup(S, 'Landing page PL', 'pl'),
       languageGroup(S, 'Landing page EN', 'en'),

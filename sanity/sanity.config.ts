@@ -3,6 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {schemaTypes} from './schemas'
 import {deskStructure} from './structure'
 import {createSubpageInitialValue} from './subpageInitialValues'
+import {createPrivacyPolicyInitialValue} from './privacyPolicyInitialValue'
 
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID || ''
 const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
@@ -31,6 +32,7 @@ export default defineConfig({
           'landingCollaborationSection',
           'landingContactSection',
           'subpageContent',
+          'privacyPolicy',
         ].includes(template.schemaType),
       ),
       {
@@ -39,6 +41,12 @@ export default defineConfig({
         schemaType: 'subpageContent',
         parameters: [{name: 'slug', title: 'Slug', type: 'string'}],
         value: ({slug}) => createSubpageInitialValue(slug),
+      },
+      {
+        id: 'privacyPolicy',
+        title: 'Polityka prywatności',
+        schemaType: 'privacyPolicy',
+        value: () => createPrivacyPolicyInitialValue(),
       },
     ],
   },

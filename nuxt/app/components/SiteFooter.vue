@@ -34,6 +34,7 @@
       </div>
       <div class="foot-bottom">
         <span>© 2026 TRES ART — <span data-i="foot_rights">Wszelkie prawa zastrzeżone.</span></span>
+        <NuxtLink to="/polityka-prywatnosci" class="foot-legal">Polityka prywatności</NuxtLink>
         <span class="foot-made" data-i="foot_made">Tworzone w Milan & Warszawa</span>
       </div>
     </div>

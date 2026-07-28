@@ -13,6 +13,7 @@ import {manifest} from './objects/manifest'
 import {manifestCard} from './objects/manifestCard'
 import {manifestStat} from './objects/manifestStat'
 import {processStep} from './objects/processStep'
+import {privacyPolicySection} from './objects/privacyPolicySection'
 import {sectionIntro} from './objects/sectionIntro'
 import {socialLink} from './objects/socialLink'
 import {workItem} from './objects/workItem'
@@ -35,10 +36,12 @@ import {landingSeoSection} from './documents/landingSeoSection'
 import {landingWorkSection} from './documents/landingWorkSection'
 import {siteSettings} from './documents/siteSettings'
 import {subpageContent} from './documents/subpageContent'
+import {privacyPolicy} from './documents/privacyPolicy'
 
 export const schemaTypes = [
   siteSettings,
   subpageContent,
+  privacyPolicy,
   landingSeoSection,
   landingHeroSection,
   landingAudienceSection,
@@ -71,6 +74,7 @@ export const schemaTypes = [
   fileType,
   checklistItem,
   processStep,
+  privacyPolicySection,
   collaborationSection,
   collabBenefit,
   contactSection,
