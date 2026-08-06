@@ -12,4 +12,5 @@ useHead({
 
 <template>
   <NuxtPage />
+  <CookieConsent />
 </template>

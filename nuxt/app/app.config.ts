@@ -22,10 +22,14 @@ export default defineAppConfig({
     city: 'Warszawa',
     country: 'PL',
   },
+  analytics: {
+    gtmId: 'GTM-KSJN429R',
+    ga4MeasurementId: 'G-E4QJGC3VYN',
+  },
   socialLinks: [
-    { label: 'Instagram', href: 'https://www.instagram.com/' },
-    { label: 'Facebook', href: 'https://www.facebook.com/' },
-    { label: 'YouTube', href: 'https://www.youtube.com/' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+    { label: 'Instagram', href: 'https://www.instagram.com/tresart3d/' },
+    { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61592649779037' },
+    { label: 'YouTube', href: 'https://www.youtube.com/@Tres-Art' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tres-art-002984425/' },
   ],
 })

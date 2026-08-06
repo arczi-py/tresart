@@ -95,8 +95,10 @@ export const privacyPolicyFallback: PrivacyPolicy = {
       slot: 'cookies',
       title: '7. Pliki cookies',
       paragraphs: [
-        'Obecnie serwis nie korzysta z analitycznych ani marketingowych plików cookies. Nie ładuje narzędzi reklamowych, takich jak Meta Pixel, ani zewnętrznej analityki, takiej jak Google Analytics.',
-        'Jeżeli w przyszłości zostaną wdrożone narzędzia analityczne, marketingowe lub osadzone materiały zewnętrzne, serwis zostanie uzupełniony o mechanizm zarządzania zgodą przed ich uruchomieniem.',
+        'Serwis korzysta z niezbędnych plików cookies wymaganych do prawidłowego działania strony oraz zapamiętania wyboru zgód. Te pliki nie wymagają zgody użytkownika.',
+        'Po wyrażeniu zgody analitycznej serwis może uruchomić Google Tag Manager oraz Google Analytics 4 w celu pomiaru ruchu, źródeł odwiedzin i jakości działania strony. Bez tej zgody narzędzia analityczne nie są ładowane.',
+        'Po wyrażeniu zgody marketingowej serwis może w przyszłości uruchamiać tagi reklamowe, w tym Meta Pixel, gdy zostanie skonfigurowany. Bez zgody marketingowej tagi marketingowe nie są ładowane.',
+        'Decyzję można w każdej chwili zmienić przez link „Ustawienia cookies” dostępny w stopce strony.',
       ],
       items: [],
     },
