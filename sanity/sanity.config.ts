@@ -30,6 +30,7 @@ export default defineConfig({
           'landingFilesSection',
           'landingProcessSection',
           'landingCollaborationSection',
+          'landingFaqSection',
           'landingContactSection',
           'subpageContent',
           'privacyPolicy',

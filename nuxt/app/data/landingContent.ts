@@ -289,3 +289,30 @@ export const fileChecklist = [
     description: 'Deadline, kontekst użycia i orientacyjna liczba sztuk.',
   },
 ] as const
+
+export const faqItems = [
+  {
+    questionKey: 'faq_1_q',
+    question: 'Czy wystarczy sam render, jeśli nie mam gotowego modelu do druku?',
+    answerKey: 'faq_1_a',
+    answer: 'Tak. Render lub szkic wystarczy do pierwszej rozmowy i oceny kierunku. Jeśli model wymaga przygotowania produkcyjnego, wskażemy, co trzeba dopracować przed wyceną i drukiem.',
+  },
+  {
+    questionKey: 'faq_2_q',
+    question: 'Jak duże obiekty możecie drukować?',
+    answerKey: 'faq_2_a',
+    answer: 'Pracujemy z wielkoformatowym drukiem 3D do około 2,5 metra w jednej przestrzeni roboczej. Przy większych formach dobieramy podział, łączenia i wykończenie tak, aby zachować charakter projektu.',
+  },
+  {
+    questionKey: 'faq_3_q',
+    question: 'Czy projekt i autorstwo zostają po stronie twórcy?',
+    answerKey: 'faq_3_a',
+    answer: 'Tak. TRES ART działa jako zaplecze produkcyjne. Autorstwo, marka i prawa do projektu pozostają po stronie twórcy, projektanta lub studia.',
+  },
+  {
+    questionKey: 'faq_4_q',
+    question: 'Jakie pliki najlepiej wysłać do wyceny?',
+    answerKey: 'faq_4_a',
+    answer: 'Najlepiej sprawdzają się pliki STL, OBJ lub STEP, ale do startu może wystarczyć render, brief i docelowy wymiar. Pomagają też referencje koloru, faktury oraz planowanego zastosowania obiektu.',
+  },
+] as const

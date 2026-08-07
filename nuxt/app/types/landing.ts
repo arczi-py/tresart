@@ -118,6 +118,13 @@ export type ChecklistItem = {
   description: string
 }
 
+export type FaqItem = {
+  questionKey: string
+  question: string
+  answerKey: string
+  answer: string
+}
+
 export type LandingPageData = {
   source: 'local' | 'sanity'
   settings: LandingSettings
@@ -125,6 +132,7 @@ export type LandingPageData = {
   audienceItems: AudienceItem[]
   collabBenefits: CollabBenefit[]
   fileChecklist: ChecklistItem[]
+  faqItems: FaqItem[]
   fileTypes: FileType[]
   foundryCards: FoundryCard[]
   manifestCards: ManifestCard[]

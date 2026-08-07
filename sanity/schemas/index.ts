@@ -6,6 +6,7 @@ import {collabBenefit} from './objects/collabBenefit'
 import {contactSection} from './objects/contactSection'
 import {fileSection} from './objects/fileSection'
 import {fileType} from './objects/fileType'
+import {faqItem} from './objects/faqItem'
 import {foundryCard} from './objects/foundryCard'
 import {hero} from './objects/hero'
 import {landingSeo} from './objects/landingSeo'
@@ -28,6 +29,7 @@ import {landingAudienceSection} from './documents/landingAudienceSection'
 import {landingCollaborationSection} from './documents/landingCollaborationSection'
 import {landingContactSection} from './documents/landingContactSection'
 import {landingFilesSection} from './documents/landingFilesSection'
+import {landingFaqSection} from './documents/landingFaqSection'
 import {landingFoundrySection} from './documents/landingFoundrySection'
 import {landingHeroSection} from './documents/landingHeroSection'
 import {landingManifestSection} from './documents/landingManifestSection'
@@ -51,6 +53,7 @@ export const schemaTypes = [
   landingFilesSection,
   landingProcessSection,
   landingCollaborationSection,
+  landingFaqSection,
   landingContactSection,
   address,
   socialLink,
@@ -72,6 +75,7 @@ export const schemaTypes = [
   subpageWorkItem,
   fileSection,
   fileType,
+  faqItem,
   checklistItem,
   processStep,
   privacyPolicySection,

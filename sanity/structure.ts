@@ -28,6 +28,7 @@ const landingSections = [
   ['Pliki', 'landingFilesSection', 'files'],
   ['Proces', 'landingProcessSection', 'process'],
   ['Współpraca', 'landingCollaborationSection', 'collaboration'],
+  ['FAQ', 'landingFaqSection', 'faq'],
   ['Kontakt', 'landingContactSection', 'contact'],
 ] as const
 

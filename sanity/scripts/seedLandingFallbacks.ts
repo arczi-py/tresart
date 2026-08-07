@@ -3,6 +3,7 @@ import {
   audienceItems,
   collabBenefits,
   fileChecklist,
+  faqItems,
   fileTypes,
   foundryCards,
   manifestCards,
@@ -250,6 +251,23 @@ function landingDocuments(language: Language): RecordValue[] {
           text: text(language, item.textKey, item.text),
         })),
       },
+    },
+    {
+      _id: `landing-faq-${language}`,
+      _type: 'landingFaqSection',
+      section: {
+        _type: 'sectionIntro',
+        eyebrow: text(language, 'faq_eyebrow'),
+        heading: text(language, 'faq_h2'),
+        description: text(language, 'faq_p'),
+      },
+      items: faqItems.map((item, index) => ({
+        _key: keyFor('faq', index),
+        _type: 'faqItem',
+        slot: item.questionKey,
+        question: text(language, item.questionKey, item.question),
+        answer: text(language, item.answerKey, item.answer),
+      })),
     },
     {
       _id: `landing-contact-${language}`,

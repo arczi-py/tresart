@@ -96,6 +96,12 @@ export const landingSanityQuery = `{
         benefits[]{ slot, text }
       }
     },
+    "faq": *[_type == "landingFaqSection"]{
+      _id,
+      "language": select(_id match "*-pl" => "pl", _id match "*-en" => "en", _id match "*-de" => "de", "pl"),
+      section,
+      items[]{ slot, question, answer }
+    },
     "contact": *[_type == "landingContactSection"]{
       _id,
       "language": select(_id match "*-pl" => "pl", _id match "*-en" => "en", _id match "*-de" => "de", "pl"),
@@ -163,6 +169,11 @@ export const landingSanityQuery = `{
       heading,
       description,
       benefits
+    },
+    faqSection,
+    faq[]{
+      question,
+      answer
     },
     contact
   }

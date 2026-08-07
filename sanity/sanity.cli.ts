@@ -6,4 +6,7 @@ export default defineCliConfig({
     dataset: process.env.SANITY_STUDIO_DATASET || 'production',
   },
   studioHost: 'tresart',
+  deployment: {
+    appId: 'axujsb5czf6jdgmn2jrxepyd',
+  },
 })

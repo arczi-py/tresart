@@ -2,6 +2,7 @@ import type {
   AudienceItem,
   ChecklistItem,
   CollabBenefit,
+  FaqItem,
   FileType,
   FoundryCard,
   LandingLanguage,
@@ -418,6 +419,9 @@ function mapSectionCopyFromSections(sections: UnknownRecord, translations: Landi
   applySectionText(translations, 'col_eyebrow', sections, 'collaboration', ['collaboration', 'eyebrow'], '')
   applySectionText(translations, 'col_h2', sections, 'collaboration', ['collaboration', 'heading'], '')
   applySectionText(translations, 'col_p', sections, 'collaboration', ['collaboration', 'description'], '')
+  applySectionText(translations, 'faq_eyebrow', sections, 'faq', ['section', 'eyebrow'], '')
+  applySectionText(translations, 'faq_h2', sections, 'faq', ['section', 'heading'], '')
+  applySectionText(translations, 'faq_p', sections, 'faq', ['section', 'description'], '')
   applySectionText(translations, 'con_eyebrow', sections, 'contact', ['contact', 'eyebrow'], '')
   applySectionText(translations, 'con_h2', sections, 'contact', ['contact', 'heading'], '')
   applySectionText(translations, 'con_p', sections, 'contact', ['contact', 'description'], '')
@@ -567,6 +571,32 @@ function mapCollabBenefitsFromSections(sections: UnknownRecord, fallback: Collab
   }))
 }
 
+function mapFaqItems(source: unknown, fallback: FaqItem[], translations: LandingTranslations) {
+  return mapByIndex(source, fallback, (item, sanityItem) => {
+    applyLocalizedText(translations, item.questionKey, sanityItem.question, item.question)
+    applyLocalizedText(translations, item.answerKey, sanityItem.answer, item.answer)
+
+    return {
+      ...item,
+      question: readLocalized(sanityItem.question, item.question),
+      answer: readLocalized(sanityItem.answer, item.answer),
+    }
+  })
+}
+
+function mapFaqItemsFromSections(sections: UnknownRecord, fallback: FaqItem[], translations: LandingTranslations) {
+  applyArrayText(translations, sections, 'faq', ['items'], fallback, [
+    { keyProp: 'questionKey', sourcePath: ['question'], fallbackProp: 'question' },
+    { keyProp: 'answerKey', sourcePath: ['answer'], fallbackProp: 'answer' },
+  ])
+
+  return mapByIndex(sectionDocument(sections, 'faq', 'pl').items, fallback, (item, sanityItem) => ({
+    ...item,
+    question: readString(sanityItem.question, item.question),
+    answer: readString(sanityItem.answer, item.answer),
+  }))
+}
+
 function mapSectionCopy(page: UnknownRecord, translations: LandingTranslations) {
   const hero = asRecord(page.hero)
   const audience = asRecord(page.audienceSection)
@@ -575,6 +605,7 @@ function mapSectionCopy(page: UnknownRecord, translations: LandingTranslations) 
   const files = asRecord(page.files)
   const process = asRecord(page.processSection)
   const collaboration = asRecord(page.collaboration)
+  const faq = asRecord(page.faqSection)
   const contact = asRecord(page.contact)
 
   applyLocalizedText(translations, 'hero_eyebrow', hero.eyebrow, 'Digital Foundry — Warszawa')
@@ -606,6 +637,9 @@ function mapSectionCopy(page: UnknownRecord, translations: LandingTranslations) 
   applyLocalizedText(translations, 'col_eyebrow', collaboration.eyebrow, '')
   applyLocalizedText(translations, 'col_h2', collaboration.heading, '')
   applyLocalizedText(translations, 'col_p', collaboration.description, '')
+  applyLocalizedText(translations, 'faq_eyebrow', faq.eyebrow, '')
+  applyLocalizedText(translations, 'faq_h2', faq.heading, '')
+  applyLocalizedText(translations, 'faq_p', faq.description, '')
   applyLocalizedText(translations, 'con_eyebrow', contact.eyebrow, '')
   applyLocalizedText(translations, 'con_h2', contact.heading, '')
   applyLocalizedText(translations, 'con_p', contact.description, '')
@@ -639,6 +673,7 @@ export function mapSanityLandingPage(payload: SanityLandingPayload | null, fallb
       audienceItems: mapAudienceItemsFromSections(sections, fallback.audienceItems, translations),
       collabBenefits: mapCollabBenefitsFromSections(sections, fallback.collabBenefits, translations),
       fileChecklist: mapChecklistFromSections(sections, fallback.fileChecklist, translations),
+      faqItems: mapFaqItemsFromSections(sections, fallback.faqItems, translations),
       fileTypes: mapFileTypesFromSections(sections, fallback.fileTypes, translations),
       foundryCards: mapFoundryCardsFromSections(sections, fallback.foundryCards, translations),
       manifestCards: mapManifestCardsFromSections(sections, fallback.manifestCards, translations),
@@ -668,6 +703,7 @@ export function mapSanityLandingPage(payload: SanityLandingPayload | null, fallb
     audienceItems: mapAudienceItems(page.audience, fallback.audienceItems, translations),
     collabBenefits: mapCollabBenefits(collaboration.benefits, fallback.collabBenefits, translations),
     fileChecklist: mapChecklist(files.checklist, fallback.fileChecklist, translations),
+    faqItems: mapFaqItems(page.faq, fallback.faqItems, translations),
     fileTypes: mapFileTypes(files.types, fallback.fileTypes, translations),
     foundryCards: mapFoundryCards(page.foundry, fallback.foundryCards, translations),
     manifestCards: mapManifestCards(manifest.cards, fallback.manifestCards, translations),

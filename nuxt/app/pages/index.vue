@@ -12,6 +12,7 @@
       <FileSection />
       <ProcessSection />
       <CollabSection />
+      <FaqSection />
       <ContactSection />
     </main>
     <SiteFooter />
@@ -75,6 +76,52 @@ const websiteJsonLd = {
   publisher: { '@id': `${siteUrl}/#localbusiness` },
 }
 
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${siteUrl}/#large-format-3d-printing`,
+  name: 'Wielkoformatowy druk 3D i produkcja obiektów z renderów',
+  serviceType: 'Large-format 3D printing',
+  description: landingPage.settings.seo.description,
+  provider: { '@id': `${siteUrl}/#localbusiness` },
+  areaServed: [
+    { '@type': 'Country', name: 'Polska' },
+    { '@type': 'Place', name: 'Europa' },
+  ],
+  audience: [
+    { '@type': 'Audience', audienceType: 'graficy i artyści 3D' },
+    { '@type': 'Audience', audienceType: 'projektanci mebli' },
+    { '@type': 'Audience', audienceType: 'architekci i studia projektowe' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Usługi TRES ART',
+    itemListElement: landingPage.foundryCards.map((item, index) => ({
+      '@type': 'Offer',
+      position: index + 1,
+      itemOffered: {
+        '@type': 'Service',
+        name: item.title,
+        description: item.description,
+      },
+    })),
+  },
+}
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${siteUrl}/#faq`,
+  mainEntity: landingPage.faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+}
+
 useSeoMeta({
   title: landingPage.settings.seo.title,
   description: landingPage.settings.seo.description,
@@ -116,6 +163,14 @@ useHead({
     {
       type: 'application/ld+json',
       children: JSON.stringify(websiteJsonLd),
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(serviceJsonLd),
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(faqJsonLd),
     },
   ],
 })
